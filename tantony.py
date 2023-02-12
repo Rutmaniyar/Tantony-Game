@@ -76,3 +76,46 @@ print(hand2)
 print(hand3)
 if num_cards == 13:
     print(hand4)
+
+ 
+class trick:
+    def __init__(self, RuntValue, TrickCards, PlayerTurn):
+        self.TrickAssignedTo= Player.PlayerID
+        self.RuntValue = RuntValue
+        self.TrickCards = TrickCards
+        self.PlayerTurn = PlayerTurn
+
+    def assign_trick(player,TrickCards):
+        player1 = Player()
+        if(len(player1.TrickInHand) <= 3):
+            player1.TrickInHand.append(TrickCards)
+            Trick = trick('123',trick_cards,player)
+            print('Tricks In Hand',player1.TrickInHand)
+            print('Players Turn',Trick.PlayerTurn)
+        else:
+            print("The Player already has three tricks in his hand Can't be assigned to this player")
+
+    def keeping_trick(player,TrickCards):
+        player = Player()
+        if(len(player.TrickInHand) <= 3):
+            player.TrickInHand.append(TrickCards)
+            print(player.TrickInHand)
+            trick.PlayerTurn = player
+        else:
+            print("The Player already has three tricks in his hand Can't be assigned to this player")
+
+# def calculating_score():
+    
+
+class Player:
+    FullName = ""
+    PlayerID = "2"
+    TrickInHand = []
+
+trick_cards = ["Ace of Spades","Three of Spades","Eight of Spades","Ten of Spades"]
+trick.assign_trick(player="P2",TrickCards=trick_cards)
+
+class Score:
+    Team= ""
+    RoundScoreValue= ""
+    TotalScoreValue= ""
