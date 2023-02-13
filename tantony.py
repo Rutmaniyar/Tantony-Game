@@ -8,6 +8,34 @@ class Card:
     def __repr__(self):
         return f"{self.rank} of {self.suit}"
 
+class trick:
+    def __init__(self, RuntValue, TrickCards, PlayerTurn):
+        self.TrickAssignedTo= ''
+        self.RuntValue = RuntValue
+        self.TrickCards = TrickCards
+        self.PlayerTurn = PlayerTurn
+
+    def assign_trick(player,TrickCards):
+        player = Player(player1.name,player1.hand,TrickCards)
+        if(len(player.TricksinHand) <= 3):
+            player.TricksinHand.append(TrickCards)
+            Trick = trick('123',trick_cards,player.name)
+            print('Tricks In Hand',player.TricksinHand)
+            print('Players Turn',Trick.PlayerTurn)
+        else:
+            print("The Player already has three tricks in his hand Can't be assigned to this player")
+
+    def keeping_trick(player,TrickCards):
+        player = Player(player1.name,player1.hand,TrickCards)
+        if(len(player.TricksinHand) <= 3):
+            player.TricksinHand.append(TrickCards)
+            Trick = trick('123',trick_cards,player.name)
+            print('Tricks In Hand',player.TricksinHand)
+            print('Players Turn',Trick.PlayerTurn)
+        else:
+            print("The Player already has three tricks in his hand Can't be assigned to this player")
+
+
 class Deck:
     def __init__(self):
         suits = ["Hearts", "Diamonds", "Spades", "Clubs"]
@@ -32,10 +60,11 @@ def get_points(card):
 
 def get_winning_card(card1, card2, card3, card4=None):
     suit = card1.suit
-    trick = [card1,card2,card3, card4]
+    trick = [card1,card2,card3]
     cards = [card for card in [card1, card2, card3] if card.suit == suit]
     if card4:
         cards.append(card4)
+        trick.append(card4)
     cards = [card for card in cards if card.suit == suit]
     if len(cards) == 0:
         print("No winning card as no cards have the same suit as the first card.")
@@ -48,6 +77,8 @@ def get_winning_card(card1, card2, card3, card4=None):
     min_point = min(points)
     runt_card = cards[points.index(min_point)]
     print(f"Runt card: {runt_card} and the points is {min_point}")
+    return trick
+
 
 class Hand:
     def __init__(self, deck, cards_per_hand):
@@ -131,4 +162,6 @@ card1 = Card("Hearts", "Ace")
 card2 = Card("Hearts", "King")
 card3 = Card("Spades", "Queen")
 card4 = Card("Clubs", "Jack")
-get_winning_card(card1, card2, card3, card4)
+tr=get_winning_card(card1, card2, card3, card4)
+
+print(f"{tr}")
