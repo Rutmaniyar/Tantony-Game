@@ -32,6 +32,7 @@ def get_points(card):
 
 def get_winning_card(card1, card2, card3, card4=None):
     suit = card1.suit
+    trick = [card1,card2,card3, card4]
     cards = [card for card in [card1, card2, card3] if card.suit == suit]
     if card4:
         cards.append(card4)
@@ -46,7 +47,7 @@ def get_winning_card(card1, card2, card3, card4=None):
     
     min_point = min(points)
     runt_card = cards[points.index(min_point)]
-    print(f"Runt card: {runt_card}")
+    print(f"Runt card: {runt_card} and the points is {min_point}")
 
 class Hand:
     def __init__(self, deck, cards_per_hand):
@@ -124,3 +125,10 @@ print(player3)
 if num_cards == 13:
     print(player4)
 
+
+
+card1 = Card("Hearts", "Ace")
+card2 = Card("Hearts", "King")
+card3 = Card("Spades", "Queen")
+card4 = Card("Clubs", "Jack")
+get_winning_card(card1, card2, card3, card4)
