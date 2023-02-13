@@ -176,10 +176,10 @@ print(f"The selected card is :{selected_card2}")
 selected_card3_index=int(input("Enter the position of the card you want to select: "))
 selected_card3 = player3.hand.select_card(selected_card3_index-1)
 print(f"The selected card is :{selected_card3}")
-
-selected_card4_index=int(input("Enter the position of the card you want to select: "))
-selected_card4 = player4.hand.select_card(selected_card4_index-1)
-print(f"The selected card is :{selected_card4}")
+if num_cards == 13:
+    selected_card4_index=int(input("Enter the position of the card you want to select: "))
+    selected_card4 = player4.hand.select_card(selected_card4_index-1)
+    print(f"The selected card is :{selected_card4}")
 
 print("-----------------------------------------------------------------------------------------------")
 
