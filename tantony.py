@@ -19,7 +19,7 @@ class trick:
         if(len(player.trick_won) <= 3):
             player.trick_won.append(TrickCards)
             #Trick = trick('123',trick_cards,player.name)
-            print('Tricks In Hand',player.trick_won)
+            print(f"Tricks In Hand {player.trick_won} and assined to {player.name}")
             # print('Players Turn',Trick.PlayerTurn)
         else:
             print("The Player already has three tricks in his hand Can't be assigned to this player")
