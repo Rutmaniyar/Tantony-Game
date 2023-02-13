@@ -82,6 +82,10 @@ def get_winning_card(card1, card2, card3, card4=None):
 class Hand:
     def __init__(self, deck, cards_per_hand):
         self.hand = [deck.draw() for _ in range(cards_per_hand)]
+    
+    def select_card(self,index):
+        selected_card = self.hand.pop(index)
+        return selected_card
 
     def __repr__(self):
         return str(self.hand)
@@ -161,12 +165,25 @@ if num_cards == 13:
 
 
 print("-----------------------------------------------------------------------------------------------")
-card1 = Card("Hearts", "King")
-card2 = Card("Hearts", "Ace")
-card3 = Card("Spades", "Queen")
-card4 = Card("Clubs", "Jack")
-tr=get_winning_card(card1, card2, card3, card4)
+selected_card1_index=int(input("Enter the position of the card you want to select: "))
+selected_card1 = player1.hand.select_card(selected_card1_index-1)
+print(f"The selected card is :{selected_card1}")
+
+selected_card2_index=int(input("Enter the position of the card you want to select: "))
+selected_card2 = player2.hand.select_card(selected_card2_index-1)
+print(f"The selected card is :{selected_card2}")
+
+selected_card3_index=int(input("Enter the position of the card you want to select: "))
+selected_card3 = player3.hand.select_card(selected_card3_index-1)
+print(f"The selected card is :{selected_card3}")
+
+selected_card4_index=int(input("Enter the position of the card you want to select: "))
+selected_card4 = player4.hand.select_card(selected_card4_index-1)
+print(f"The selected card is :{selected_card4}")
+
 print("-----------------------------------------------------------------------------------------------")
+
+tr = get_winning_card(selected_card1, selected_card2, selected_card3, selected_card4)
 
 print("-----------------------------------------------------------------------------------------------")
 win_player=List_player[tr[2]]
