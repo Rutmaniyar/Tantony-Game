@@ -28,15 +28,18 @@ class trick:
         self.TrickCards = TrickCards
 
     def keeping_trick(player, TrickCards, runt_value):
-        player = Player(player.name, player.hand, TrickCards, runt_value)
-        if (len(player.trick_won) <= 3):
-            player.trick_won.append(TrickCards)
-            player.Runt_Face.append(runt_value)
-            print(player.trick_won)
-            print(player.Runt_Face)
-            trick.playingtrick(player)
+        # Keeping the Trick
+        player_tricks = Player(player.name, player.hand)
+
+        if (len(player_tricks.trick_won) <= 3):
+            player_tricks.trick_won.append(TrickCards)
+            player_tricks.Runt_Face.append(runt_value)
+            print(player_tricks.trick_won)
+            print(player_tricks.Runt_Face)
+            return player
         else:
-            print("You already have three tricks Pleasse give it to any other player")
+            print("You already have three tricks Please give it to any other player")
+            trick.assign_trick(TrickCards, runt_value)
 
     def assign_trick(TrickCards, runt_value):
         # player.trick_won.append[TrickCards]
@@ -218,48 +221,52 @@ class trick:
                     print(f"The selected card is :{selected_card4}")
                     print(
                         "-----------------------------------------------------------------------------------------------")
-            if (player.name == player4.name):
-                print(
-                    "-----------------------------------------------------------------------------------------------")
-                print(player4.name, "Turn")
-                print("Cards in Hand for ", player4.name, ":", player4.hand)
-                selected_card4_index = int(
-                    input("Enter the position of the card you want to select: "))
-                selected_card4 = player4.hand.select_card(
-                    selected_card4_index-1)
-                print(f"The selected card is :{selected_card4}")
-                print(
-                    "-----------------------------------------------------------------------------------------------")
-                print(player1.name, "Turn")
-                print("Cards in Hand for ", player1.name, ":", player1.hand)
-                selected_card1_index = int(
-                    input("Enter the position of the card you want to select: "))
-                selected_card1 = player1.hand.select_card(
-                    selected_card1_index-1)
-                print(f"The selected card is :{selected_card1}")
-                print(
-                    "-----------------------------------------------------------------------------------------------")
-                print(player2.name, "Turn")
-                print("Cards in Hand for ", player2.name, ":", player2.hand)
-                selected_card2_index = int(
-                    input("Enter the position of the card you want to select: "))
-                selected_card2 = player2.hand.select_card(
-                    selected_card2_index-1)
-                print(f"The selected card is :{selected_card2}")
-                print(
-                    "-----------------------------------------------------------------------------------------------")
-                print(player3.name, "Turn")
-                print("Cards in Hand for ", player3.name, ":", player3.hand)
-                selected_card3_index = int(
-                    input("Enter the position of the card you want to select: "))
-                selected_card3 = player3.hand.select_card(
-                    selected_card3_index-1)
-                print(f"The selected card is :{selected_card3}")
-                print(
-                    "-----------------------------------------------------------------------------------------------")
-
-            trick_values = get_winning_card(
+            if game_type == 4:
+                if (player.name == player4.name):
+                    print(
+                        "-----------------------------------------------------------------------------------------------")
+                    print(player4.name, "Turn")
+                    print("Cards in Hand for ", player4.name, ":", player4.hand)
+                    selected_card4_index = int(
+                        input("Enter the position of the card you want to select: "))
+                    selected_card4 = player4.hand.select_card(
+                        selected_card4_index-1)
+                    print(f"The selected card is :{selected_card4}")
+                    print(
+                        "-----------------------------------------------------------------------------------------------")
+                    print(player1.name, "Turn")
+                    print("Cards in Hand for ", player1.name, ":", player1.hand)
+                    selected_card1_index = int(
+                        input("Enter the position of the card you want to select: "))
+                    selected_card1 = player1.hand.select_card(
+                        selected_card1_index-1)
+                    print(f"The selected card is :{selected_card1}")
+                    print(
+                        "-----------------------------------------------------------------------------------------------")
+                    print(player2.name, "Turn")
+                    print("Cards in Hand for ", player2.name, ":", player2.hand)
+                    selected_card2_index = int(
+                        input("Enter the position of the card you want to select: "))
+                    selected_card2 = player2.hand.select_card(
+                        selected_card2_index-1)
+                    print(f"The selected card is :{selected_card2}")
+                    print(
+                        "-----------------------------------------------------------------------------------------------")
+                    print(player3.name, "Turn")
+                    print("Cards in Hand for ", player3.name, ":", player3.hand)
+                    selected_card3_index = int(
+                        input("Enter the position of the card you want to select: "))
+                    selected_card3 = player3.hand.select_card(
+                        selected_card3_index-1)
+                    print(f"The selected card is :{selected_card3}")
+                    print(
+                        "-----------------------------------------------------------------------------------------------")
+            if game_type == 4:
+                trick_values = get_winning_card(
                 selected_card1, selected_card2, selected_card3, selected_card4)
+            else:
+                trick_values = get_winning_card(
+                selected_card1, selected_card2, selected_card3)
             Trick_cards = trick_values[0]
             Runt_value = trick_values[3]
             print("Trick Cards:", Trick_cards)
@@ -268,67 +275,21 @@ class trick:
 
             Trick_assign = str(
                 input("Do you want to keep the trick or give it to someone? (Keep/Give):"))
-
-            # Keeping the Trick
             if (Trick_assign == "Keep"):
-                player = Player(player.name, player.hand,
-                                Trick_cards, Runt_value)
-                if (len(player.trick_won) <= 3):
-                    player.trick_won.append(Trick_cards)
-                    player.Runt_Face.append(Runt_value)
-                    print(player.trick_won)
-                    print(player.Runt_Face)
-                    continue
-            else:
-                print("You already have three tricks Please give it to any other player")
-
-            # Assigning the Trick
+                player = trick.keeping_trick(
+                    win_player, Trick_cards, Runt_value)
             if (Trick_assign == "Give"):
-                assigned_to = str(
-                    input("Enter the name of the player you want to assign the trick:"))
-                if (assigned_to == player1.name):
-                    if (len(player1.trick_won) <= 3):
-                        player1.trick_won.append(Trick_cards)
-                        player1.Runt_Face.append(Runt_value)
-                        print(player1.trick_won)
-                        trick.playingtrick(player1)
-                    else:
-                        print(
-                            "The Player already has three tricks you have to give to other player")
-                if (assigned_to == player2.name):
-                    if (len(player2.trick_won) <= 3):
-                        player2.trick_won.append(Trick_cards)
-                        player2.Runt_Face.append(Runt_value)
-                        print(player2.trick_won)
-                        trick.playingtrick(player2)
-                    else:
-                        print(
-                            "The Player already has three tricks you have to give to other player")
-                if (assigned_to == player3.name):
-                    if (len(player3.trick_won) <= 3):
-                        player3.trick_won.append(Trick_cards)
-                        player3.Runt_Face.append(Runt_value)
-                        print(player3.trick_won)
-                        trick.playingtrick(player3)
-                    else:
-                        print(
-                            "The Player already has three tricks you have to give to other player")
-                if (assigned_to == player4.name):
-                    if (len(player4.trick_won) <= 3):
-                        player4.trick_won.append(Trick_cards)
-                        player4.Runt_Face.append(Runt_value)
-                        print(player4.trick_won)
-                        trick.playingtrick(player4)
-                    else:
-                        print(
-                            "The Player already has three tricks you have to give to other player")
+                trick.assign_trick()
 
 
 class Deck:
     def __init__(self):
         suits = ["Hearts", "Diamonds", "Spades", "Clubs"]
-        ranks = ["Ace", "2", "3", "4", "5", "6", "7",
-                 "8", "9", "10", "Jack", "Queen", "King"]
+        if(game_type == 4):
+            ranks = ["Ace", "2", "3", "4", "5", "6", "7",
+                    "8", "9", "10", "Jack", "Queen", "King"]
+        else:
+            ranks = ["Ace", "2", "3", "4", "5", "6", "Jack", "Queen", "King"]
         self.deck = [Card(suit, rank) for suit in suits for rank in ranks]
 
     def shuffle(self):
@@ -339,6 +300,7 @@ class Deck:
 
 
 def get_points(card):
+    print(card)
     if num_cards == 13:
         rank_points = {"Ace": 30, "King": 25, "Queen": 20, "Jack": 15, "10": 10,
                        "9": 9, "8": 8, "7": 7, "6": 6, "5": 5, "4": 4, "3": 3, "2": 2}
@@ -381,10 +343,6 @@ class Hand:
     def __repr__(self):
         return str(self.hand)
 
-
-deck = Deck()
-deck.shuffle()
-
 print("-------------------------------------------------------------------------------------------------")
 game_type = int(input(
     "Enter the Type of the Game: \n 4 for Partnership \n 3 for Three Player \n"))
@@ -417,11 +375,13 @@ def cutting_for_dealer(game_type, Listplayer):
 
 def assigning_dealer(New_card1, New_card2, New_card3, New_card4=None):
     # Error for Three player version
-    cards = [card for card in [New_card1, New_card2, New_card3]]
+    newcards = [new_card for new_card in [New_card1, New_card2, New_card3]]
     if New_card4:
-        cards.append(New_card4)
-    newcards = [card for card in cards]
-    points = [get_points(card) for card in newcards]
+        newcards.append(New_card4)
+    newcards = [new_card for new_card in newcards]
+    print(newcards)
+    points = [get_points(new_card) for new_card in newcards]
+    print("points",points)
     min_point = min(points)
     winning_card = newcards[points.index(min_point)]
     if (winning_card == New_card1):
@@ -441,6 +401,8 @@ def assigning_dealer(New_card1, New_card2, New_card3, New_card4=None):
 
 print("-------------------------------------------------------------------------------------------------")
 
+deck = Deck()
+deck.shuffle()
 if num_cards == 12:
     for card in deck.deck:
         if card.rank in {"7", "8", "9", "10"}:
@@ -453,19 +415,19 @@ else:
     hand2 = Hand(deck, num_cards)
     hand3 = Hand(deck, num_cards)
     hand4 = Hand(deck, num_cards)
-player1 = Player(name1, hand1)
-player2 = Player(name2, hand2)
-player3 = Player(name3, hand3)
+player1 = Player(name1, hand1, '')
+player2 = Player(name2, hand2, '')
+player3 = Player(name3, hand3, '')
 if num_cards == 13:
-    player4 = Player(name4, hand4)
+    player4 = Player(name4, hand4, '')
 
-player1 = Player(name1, hand1)
-player2 = Player(name2, hand2)
-player3 = Player(name3, hand3)
+player1 = Player(name1, hand1, '')
+player2 = Player(name2, hand2, '')
+player3 = Player(name3, hand3, '')
 
 List_player = [player1, player2, player3]
 if num_cards == 13:
-    player4 = Player(name4, hand4)
+    player4 = Player(name4, hand4, '')
     List_player.append(player4)
 
 print(player1)
