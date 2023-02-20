@@ -50,7 +50,7 @@ class trick:
                 player1.trick_won.append(TrickCards)
                 player1.Runt_Face.append(runt_value)
                 print(player1.trick_won)
-                trick.playingtrick(player1)
+                return player1
             else:
                 print(
                     "The Player already has three tricks you have to give to other player")
@@ -60,6 +60,7 @@ class trick:
                 player2.Runt_Face.append(runt_value)
                 print(player2.trick_won)
                 trick.playingtrick(player2)
+                return player2
             else:
                 print(
                     "The Player already has three tricks you have to give to other player")
@@ -69,6 +70,7 @@ class trick:
                 player3.Runt_Face.append(runt_value)
                 print(player3.trick_won)
                 trick.playingtrick(player3)
+                return player3
             else:
                 print(
                     "The Player already has three tricks you have to give to other player")
@@ -78,6 +80,7 @@ class trick:
                 player4.Runt_Face.append(runt_value)
                 print(player4.trick_won)
                 trick.playingtrick(player4)
+                return player4
             else:
                 print(
                     "The Player already has three tricks you have to give to other player")
@@ -279,12 +282,12 @@ class trick:
                 player = trick.keeping_trick(
                     win_player, Trick_cards, Runt_value)
             if (Trick_assign == "Give"):
-                trick.assign_trick()
+                player = trick.assign_trick(Trick_cards, Runt_value)
 
 
 class Deck:
     def __init__(self):
-        suits = ["Hearts", "Diamonds", "Spades", "Clubs"]
+        suits = ["\u2764\ufe0f", "\u2666", "\U00002660", "\u2663"]
         if(game_type == 4):
             ranks = ["Ace", "2", "3", "4", "5", "6", "7",
                     "8", "9", "10", "Jack", "Queen", "King"]
@@ -436,22 +439,6 @@ print(player3)
 if num_cards == 13:
     print(player4)
 
-# print("-----------------------------------------------------------------------------------------------")
-# card1 = Card("Hearts", "King")
-# card2 = Card("Hearts", "Ace")
-# card3 = Card("Spades", "Queen")
-# card4 = Card("Clubs", "Jack")
-# tr=get_winning_card(card1, card2, card3, card4)
-# print("-----------------------------------------------------------------------------------------------")
-
-# print("-----------------------------------------------------------------------------------------------")
-# win_player=List_player[tr[2]]
-# print(f"The cards are {tr[0]} the runt value is {tr[1]} and assigned to {win_player.name}")
-
-# print("-----------------------------------------------------------------------------------------------")
-# trick1=trick(tr[2],tr[1],tr[0])
-# trick1.assign_trick(win_player,tr[0])
-# print("-----------------------------------------------------------------------------------------------")
 Leading_player = cutting_for_dealer(game_type, Listplayer=List_player)
 if (game_type == 4):
     assigned_leader = assigning_dealer(
