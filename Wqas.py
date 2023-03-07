@@ -29,13 +29,13 @@ class trick:
 
     def keeping_trick(player, TrickCards, runt_value):
         # Keeping the Trick
-        player_tricks = Player(player.name, player.hand)
+        #player_tricks = player#(player.name, player.hand)
 
-        if (len(player_tricks.trick_won) <= 3):
-            player_tricks.trick_won.append(TrickCards)
-            player_tricks.Runt_Face.append(runt_value)
-            print(player_tricks.trick_won)
-            print(player_tricks.Runt_Face)
+        if (len(player.trick_won) <= 3):
+            player.trick_won.append(TrickCards)
+            player.Runt_Face.append(runt_value)
+            print(f"The trick won are {player.trick_won}")
+            print(f"The Runt faces are {player.Runt_Face}")
             return player
         else:
             print("You already have three tricks Please give it to any other player")
@@ -105,7 +105,7 @@ class trick:
         for i in range(num_cards):
             sel=[]
             print("-----------------------------------------------------------------------------------------------")
-            print("Hand:", i)
+            #print("Hand:", i)
             if (player.name == player1.name):
                 print(
                     "-----------------------------------------------------------------------------------------------")
@@ -284,18 +284,24 @@ class trick:
                     sel.append(selected_card3)
                     print(
                         "-----------------------------------------------------------------------------------------------")
-            if game_type == 4:
-                #trick_values = get_winning_card(
-                #selected_card1, selected_card2, selected_card3, selected_card4)
-                trick_values = get_winning_card(sel)
-            else:
-                #trick_values = get_winning_card(selected_card1, selected_card2, selected_card3)
-                trick_values = get_winning_card(sel)
+           
+            trick_values = get_winning_card(sel)
             Trick_cards = trick_values[0]
             Runt_value = trick_values[3]
             print("Trick Cards:", Trick_cards)
-            win_player = List_player[trick_values[2]]
-            print("Trick Winner:", win_player.name)
+            win_player =None
+            if(sel[trick_values[2]] == selected_card1):
+                print("Trick Winner:", player1.name)
+                win_player=player1
+            if(sel[trick_values[2]] == selected_card2):
+                print("Trick Winner:", player2.name)
+                win_player=player2
+            if(sel[trick_values[2]] == selected_card3):
+                print("Trick Winner:", player3.name)
+                win_player=player3
+            if(sel[trick_values[2]] == selected_card4):
+                print("Trick Winner:", player4.name)
+                win_player=player4
 
             Trick_assign = str(
                 input("Do you want to keep the trick or give it to someone? (Keep/Give):"))
@@ -324,7 +330,7 @@ class Deck:
 
 
 def get_points(card):
-    print(card)
+    #print(card)
     if num_cards == 13:
         rank_points = {"Ace": 30, "King": 25, "Queen": 20, "Jack": 15, "10": 10,
                        "9": 9, "8": 8, "7": 7, "6": 6, "5": 5, "4": 4, "3": 3, "2": 2}
@@ -335,23 +341,24 @@ def get_points(card):
 
 
 def get_winning_card(cards):
+    print(cards)
     suit = cards[0].suit
     trick =cards #[card1, card2, card3]
     #cards = [card for card in [card1, card2, card3] if card.suit == suit]
     #if card4:
     #    cards.append(card4)
     #    trick.append(card4)
-    cards = [card for card in cards if card.suit == suit]
+    car = [card for card in cards if card.suit == suit]
     if len(cards) == 0:
         print("No winning card as no cards have the same suit as the first card.")
         return
-    points = [get_points(card) for card in cards]
+    points = [get_points(card) for card in car]
     max_point = max(points)
-    winning_card = cards[points.index(max_point)]
+    winning_card = car[points.index(max_point)]
     print(f"Winning card: {winning_card}")
 
     min_point = min(points)
-    runt_card = cards[points.index(min_point)]
+    runt_card = car[points.index(min_point)]
     print(f"Runt card: {runt_card} and the points are {min_point}")
     return [trick, min_point, trick.index(winning_card), runt_card]
 
@@ -442,26 +449,20 @@ else:
     hand2 = Hand(deck, num_cards)
     hand3 = Hand(deck, num_cards)
     hand4 = Hand(deck, num_cards)
-player1 = Player(name1, hand1, '')
-player2 = Player(name2, hand2, '')
-player3 = Player(name3, hand3, '')
+player1 = Player(name1, hand1)
+player2 = Player(name2, hand2)
+player3 = Player(name3, hand3)
 if num_cards == 13:
-    player4 = Player(name4, hand4, '')
+    player4 = Player(name4, hand4)
 
-player1 = Player(name1, hand1, '')
-player2 = Player(name2, hand2, '')
-player3 = Player(name3, hand3, '')
+player1 = Player(name1, hand1)
+player2 = Player(name2, hand2)
+player3 = Player(name3, hand3)
 
 List_player = [player1, player2, player3]
 if num_cards == 13:
-    player4 = Player(name4, hand4, '')
+    player4 = Player(name4, hand4)
     List_player.append(player4)
-
-print(player1)
-print(player2)
-print(player3)
-if num_cards == 13:
-    print(player4)
 
 Leading_player = cutting_for_dealer(game_type, Listplayer=List_player)
 if (game_type == 4):
@@ -472,4 +473,12 @@ if (game_type == 3):
         Leading_player[0], Leading_player[1], Leading_player[2])
 lime_pos = (List_player.index(assigned_leader) + 1) % int(game_type)
 Dealer_left = List_player[lime_pos]
+
+print(player1)
+print(player2)
+print(player3)
+if num_cards == 13:
+    print(player4)
+
+
 trick.playingtrick(Dealer_left)
