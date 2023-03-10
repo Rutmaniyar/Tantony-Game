@@ -477,8 +477,14 @@ Dealer_left = List_player[lime_pos]
 print(player1)
 print(player2)
 print(player3)
+
 if num_cards == 13:
     print(player4)
-
+def playing13th trick(player):
+        #i = 12
+        #while i <= num_cards:
+         #   i = i + 1
+        for i in range(num_cards): 5 diamonds, 10 hearts, Q spades, 6 Spades
+    
 
 trick.playingtrick(Dealer_left)
