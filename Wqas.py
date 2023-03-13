@@ -299,9 +299,10 @@ class trick:
             if(sel[trick_values[2]] == selected_card3):
                 print("Trick Winner:", player3.name)
                 win_player=player3
-            if(sel[trick_values[2]] == selected_card4):
-                print("Trick Winner:", player4.name)
-                win_player=player4
+            if game_type == 4: 
+                if(sel[trick_values[2]] == selected_card4):
+                    print("Trick Winner:", player4.name)
+                    win_player=player4
 
             Trick_assign = str(
                 input("Do you want to keep the trick or give it to someone? (Keep/Give):"))
