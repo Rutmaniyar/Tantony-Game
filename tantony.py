@@ -62,7 +62,7 @@ class trick:
                 return player
             else:
                 print("You already have three tricks Please give it to any other player")
-                return trick.assign_trick(TrickCards, runt_value)
+                return trick.assign_trick(TrickCards, runt_value,player_score)
 
         if (len(player.trick_won) <= 2):
             player.trick_won.append(TrickCards)
@@ -74,9 +74,9 @@ class trick:
             return player
         else:
             print("You already have three tricks Please give it to any other player")
-            return trick.assign_trick(TrickCards, runt_value)
+            return trick.assign_trick(TrickCards, runt_value,player_score)
 
-    def assign_trick(TrickCards, runt_value):
+    def assign_trick(TrickCards, runt_value,player_score):
         # player.trick_won.append[TrickCards]
         assigned_to = str(
             input("Enter the name of the player you want to assign the trick:"))
@@ -84,42 +84,46 @@ class trick:
             if (len(player1.trick_won) <= 2):
                 player1.trick_won.append(TrickCards)
                 player1.Runt_Face.append(runt_value)
+                player1.individual_score.append(player_score)
                 print(player1.trick_won)
                 return player1
             else:
                 print(
                     "The Player already has three tricks you have to give to other player")
-                return trick.assign_trick(TrickCards, runt_value)
+                return trick.assign_trick(TrickCards, runt_value,player_score)
         if (assigned_to == player2.name):
             if (len(player2.trick_won) <= 2):
                 player2.trick_won.append(TrickCards)
                 player2.Runt_Face.append(runt_value)
+                player2.individual_score.append(player_score)
                 print(player2.trick_won)
                 return player2
             else:
                 print(
                     "The Player already has three tricks you have to give to other player")
-                return trick.assign_trick(TrickCards, runt_value)
+                return trick.assign_trick(TrickCards, runt_value,player_score)
         if (assigned_to == player3.name):
             if (len(player3.trick_won) <= 2):
                 player3.trick_won.append(TrickCards)
                 player3.Runt_Face.append(runt_value)
+                player3.individual_score.append(player_score)
                 print(player3.trick_won)
                 return player3
             else:
                 print(
                     "The Player already has three tricks you have to give to other player")
-                return trick.assign_trick(TrickCards, runt_value)
+                return trick.assign_trick(TrickCards, runt_value,player_score)
         if (assigned_to == player4.name):
             if (len(player4.trick_won) <= 2):
                 player4.trick_won.append(TrickCards)
                 player4.Runt_Face.append(runt_value)
+                player4.individual_score.append(player_score)
                 print(player4.trick_won)
                 return player4
             else:
                 print(
                     "The Player already has three tricks you have to give to other player")
-                return trick.assign_trick(TrickCards, runt_value)
+                return trick.assign_trick(TrickCards, runt_value,player_score)
 
         # For 3 Player Version
         if (game_type == 3):
@@ -134,7 +138,7 @@ class trick:
                 else:
                     print(
                         "The Player already has three tricks you have to give to other player")
-                    return trick.assign_trick(TrickCards, runt_value)
+                    return trick.assign_trick(TrickCards, runt_value,player_score)
             if (assigned_to == player2.name):
                 if (len(player2.trick_won) <= 2):
                     player2.trick_won.append(TrickCards)
@@ -144,7 +148,7 @@ class trick:
                 else:
                     print(
                         "The Player already has three tricks you have to give to other player")
-                    return trick.assign_trick(TrickCards, runt_value)
+                    return trick.assign_trick(TrickCards, runt_value,player_score)
             if (assigned_to == player3.name):
                 if (len(player3.trick_won) <= 2):
                     player3.trick_won.append(TrickCards)
@@ -154,7 +158,7 @@ class trick:
                 else:
                     print(
                         "The Player already has three tricks you have to give to other player")
-                    return trick.assign_trick(TrickCards, runt_value)
+                    return trick.assign_trick(TrickCards, runt_value,player_score)
 
     def playingtrick(player):
         # Turn issue can not differentiate between the turn in parameter and other data because of conflict
@@ -390,20 +394,36 @@ class trick:
                         player = trick.keeping_trick(
                             win_player, Trick_cards, Runt_value,player_points)
                     if (Trick_assign == "Give"):
-                        player = trick.assign_trick(Trick_cards, Runt_value)
+                        player = trick.assign_trick(Trick_cards, Runt_value,player_points)
 
             # Continuation of a Trick ( Merging all the tricks of a player )
             
-            player1.hand = player1.trick_won[0] + player1.trick_won[1]+player1.trick_won[2]
-            player2.hand = player2.trick_won[0] + player2.trick_won[1]+player2.trick_won[2]
-            player3.hand = player3.trick_won[0] + player3.trick_won[1]+player3.trick_won[2]
+            player1.hand = player1.trick_won[0] + player1.trick_won[1]+player1.trick_won[2]+player1.trick_won[3]
+            player2.hand = player2.trick_won[0] + player2.trick_won[1]+player2.trick_won[2]+player2.trick_won[3]
+            player3.hand = player3.trick_won[0] + player3.trick_won[1]+player3.trick_won[2]+player3.trick_won[3]
+
             if game_type == 4:
-                player4.hand = player4.trick_won[0] + player4.trick_won[1]+player4.trick_won[2]
+                player4.hand = player4.trick_won[0] + player4.trick_won[1]+player4.trick_won[2]+player4.trick_won[3]
+            
+            player1.individual_score = sum(player1.individual_score)
+            player2.individual_score = sum(player2.individual_score)
+            player3.individual_score = sum(player3.individual_score)
+            
+            if game_type == 4:
+                player4.individual_score = sum(player4.individual_score)
 
             print("Player 1 Hand", player1.hand)
             print("Player 2 Hand", player2.hand)
             print("Player 3 Hand", player3.hand)
             print("Player 4 Hand", player4.hand)
+
+            print("Player 1 Score", player1.individual_score)
+            print("Player 2 Score", player2.individual_score)
+            print("Player 3 Score", player3.individual_score)
+            print("Player 4 Score", player4.individual_score)
+
+            print("Team A score:",sum(player1.individual_score+player3.individual_score))
+            print("Team B score:",sum(player2.individual_score+player4.individual_score))
 
 
 class Deck:
@@ -432,26 +452,6 @@ def get_points(card):
         rank_points = {"Ace": 25, "King": 20, "Queen": 15, "Jack": 10, "6": 6,
                        "5": 5, "4": 4, "3": 3, "2": 2}
     return rank_points[card.rank]
-
-
-# def get_winning_card_last_trick(cards):
-#     print(cards)
-#     suit = cards[0].suit
-#     trick = cards  # [card1, card2, card3]
-#     car = [card for card in cards if card.suit == suit]
-#     if len(cards) == 0:
-#         print("No winning card as no cards have the same suit as the first card.")
-#         return
-#     points = [get_points(card) for card in car]
-#     max_point = max(points)
-#     winning_card = car[points.index(max_point)]
-#     print(f"Winning card: {winning_card}")
-
-#     max_point = max(points)
-#     runt_card = car[points.index(max_point)]
-#     print(f"Runt card: {runt_card} and the points are {max_point}")
-#     return [trick, trick.index(winning_card), runt_card, winning_card,max_point]
-
 
 def get_winning_card(cards):
     print(cards)
