@@ -40,7 +40,11 @@ class Hand:
     def select_card(self, index):
         selected_card = self.hand.pop(index)
         return selected_card
-
+    
+    def get_card(self, index):
+        selected_card = self.hand[index]
+        return selected_card
+    
     def __repr__(self):
         return str(self.hand)
 
@@ -193,10 +197,7 @@ class trick:
                     return trick.assign_trick(TrickCards, runt_value,player_score)
 
     def playingtrick(player):
-        # Turn issue can not differentiate between the turn in parameter and other data because of conflict
-        # i = 0
-        # while i <= num_cards:
-        #   i = i + 1
+       
         for j in range(game_type):
             print("-----------------------------------------------------------------------------------------------")
             print("-----------------------------------------------------------------------------------------------")
@@ -219,6 +220,7 @@ class trick:
                     selected_card1 = player1.hand.select_card(
                         selected_card1_index-1)
                     sel.append(selected_card1)
+                    suite=selected_card1.suit
                     print(f"The selected card is :{selected_card1}")
                     print(
                         "-----------------------------------------------------------------------------------------------")
@@ -227,6 +229,7 @@ class trick:
                     player2.iterate_hand()
                     selected_card2_index = int(
                         input("Enter the position of the card you want to select: "))
+                    selected_card2_index=cond_suit(player2, suite, selected_card2_index)
                     selected_card2 = player2.hand.select_card(
                         selected_card2_index-1)
                     print(f"The selected card is :{selected_card2}")
@@ -238,6 +241,7 @@ class trick:
                     player3.iterate_hand()
                     selected_card3_index = int(
                         input("Enter the position of the card you want to select: "))
+                    selected_card3_index=cond_suit(player3, suite, selected_card3_index)
                     selected_card3 = player3.hand.select_card(
                         selected_card3_index-1)
                     print(f"The selected card is :{selected_card3}")
@@ -250,8 +254,8 @@ class trick:
                         player4.iterate_hand()
                         selected_card4_index = int(
                             input("Enter the position of the card you want to select: "))
-                        selected_card4 = player4.hand.select_card(
-                            selected_card4_index-1)
+                        selected_card4_index=cond_suit(player4, suite, selected_card4_index)
+                        selected_card4 = player4.hand.select_card(selected_card4_index-1)
                         print(f"The selected card is :{selected_card4}")
                         sel.append(selected_card4)
                         print(
@@ -268,6 +272,7 @@ class trick:
                         selected_card2_index-1)
                     print(f"The selected card is :{selected_card2}")
                     sel.append(selected_card2)
+                    suite=selected_card2.suit
                     print(
                         "-----------------------------------------------------------------------------------------------")
                     print(player3.name, "Turn")
@@ -275,6 +280,7 @@ class trick:
                     player3.iterate_hand()
                     selected_card3_index = int(
                         input("Enter the position of the card you want to select: "))
+                    selected_card3_index=cond_suit(player3, suite, selected_card3_index)
                     selected_card3 = player3.hand.select_card(
                         selected_card3_index-1)
                     print(f"The selected card is :{selected_card3}")
@@ -288,6 +294,7 @@ class trick:
                         player4.iterate_hand()
                         selected_card4_index = int(
                             input("Enter the position of the card you want to select: "))
+                        selected_card4_index=cond_suit(player4, suite, selected_card4_index)
                         selected_card4 = player4.hand.select_card(
                             selected_card4_index-1)
                         print(f"The selected card is :{selected_card4}")
@@ -299,6 +306,7 @@ class trick:
                     player1.iterate_hand()
                     selected_card1_index = int(
                         input("Enter the position of the card you want to select: "))
+                    selected_card1_index=cond_suit(player1, suite, selected_card1_index)
                     selected_card1 = player1.hand.select_card(
                         selected_card1_index-1)
                     print(f"The selected card is :{selected_card1}")
@@ -317,6 +325,7 @@ class trick:
                         selected_card3_index-1)
                     print(f"The selected card is :{selected_card3}")
                     sel.append(selected_card3)
+                    suite=selected_card3.suit
 
                     if game_type == 4:
                         print(player4.name, "Turn")
@@ -324,6 +333,7 @@ class trick:
                         player4.iterate_hand()
                         selected_card4_index = int(
                             input("Enter the position of the card you want to select: "))
+                        selected_card4_index=cond_suit(player4, suite, selected_card4_index)
                         selected_card4 = player4.hand.select_card(
                             selected_card4_index-1)
                         print(f"The selected card is :{selected_card4}")
@@ -336,6 +346,7 @@ class trick:
                     player1.iterate_hand()
                     selected_card1_index = int(
                         input("Enter the position of the card you want to select: "))
+                    selected_card1_index=cond_suit(player1, suite, selected_card1_index)
                     selected_card1 = player1.hand.select_card(
                         selected_card1_index-1)
                     print(f"The selected card is :{selected_card1}")
@@ -347,6 +358,7 @@ class trick:
                     player2.iterate_hand()
                     selected_card2_index = int(
                         input("Enter the position of the card you want to select: "))
+                    selected_card2_index=cond_suit(player2, suite, selected_card2_index)
                     selected_card2 = player2.hand.select_card(
                         selected_card2_index-1)
                     print(f"The selected card is :{selected_card2}")
@@ -366,6 +378,7 @@ class trick:
                             selected_card4_index-1)
                         print(f"The selected card is :{selected_card4}")
                         sel.append(selected_card4)
+                        suite=selected_card4.suit
                         print(
                             "-----------------------------------------------------------------------------------------------")
                         print(player1.name, "Turn")
@@ -373,6 +386,7 @@ class trick:
                         player1.iterate_hand()
                         selected_card1_index = int(
                             input("Enter the position of the card you want to select: "))
+                        selected_card1_index=cond_suit(player1, suite, selected_card1_index)
                         selected_card1 = player1.hand.select_card(
                             selected_card1_index-1)
                         print(f"The selected card is :{selected_card1}")
@@ -384,6 +398,7 @@ class trick:
                         player2.iterate_hand()
                         selected_card2_index = int(
                             input("Enter the position of the card you want to select: "))
+                        selected_card2_index=cond_suit(player2, suite, selected_card2_index)
                         selected_card2 = player2.hand.select_card(
                             selected_card2_index-1)
                         print(f"The selected card is :{selected_card2}")
@@ -395,6 +410,7 @@ class trick:
                         player3.iterate_hand()
                         selected_card3_index = int(
                             input("Enter the position of the card you want to select: "))
+                        selected_card3_index=cond_suit(player3, suite, selected_card3_index)
                         selected_card3 = player3.hand.select_card(
                             selected_card3_index-1)
                         print(f"The selected card is :{selected_card3}")
@@ -479,6 +495,19 @@ def check_suit(player, suit):
             indices.append(i)
     return indices
 
+def cond_suit(player, suit, selected_card_index):
+    if player.hand.get_card(selected_card_index-1).suit == suit:
+        return selected_card_index
+    else:
+        indices = check_suit(player, suit)
+        if len(indices) == 0:
+            return selected_card_index
+        else:
+            print("You have to play a card of the same suit")
+            selected_card_index = int(
+                input("Enter the position of the card you want to select: "))
+            return cond_suit(player, suit, selected_card_index)
+        
 def get_points(card):
     # print(card)
     if num_cards == 13:
