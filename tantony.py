@@ -1,6 +1,5 @@
 import random
 
-nm=0
 
 class Deck:
     def __init__(self):
@@ -473,6 +472,12 @@ class trick:
             print("Team B score:",sum(player2.individual_score+player4.individual_score))
 
 
+def check_suit(player, suit):
+    indices = []
+    for i, card in enumerate(player.hand.hand):
+        if card.suit == suit:
+            indices.append(i)
+    return indices
 
 def get_points(card):
     # print(card)
