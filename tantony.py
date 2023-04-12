@@ -627,30 +627,34 @@ class trick:
                                 elif(Runt_value == selected_card4 and game_type ==4):
                                     selected_card3=Runt_value
                                     selected_card4=sel[trick_values[2]]
-
-                            if game_type == 4:
-                                if (sel[trick_values[2]] == selected_card4):
-                                    if (Runt_value == selected_card1):
-                                        selected_card4=Runt_value
-                                        selected_card1=sel[trick_values[2]]
-                                    elif(Runt_value == selected_card2):
-                                        selected_card4=Runt_value
-                                        selected_card2=sel[trick_values[2]]
-                                    elif(Runt_value == selected_card3):
-                                        selected_card4=Runt_value
-                                        selected_card3=sel[trick_values[2]]
+                          
+                            if (sel[trick_values[2]] == selected_card4):
+                                if (Runt_value == selected_card1):
+                                    selected_card4=Runt_value
+                                    selected_card1=sel[trick_values[2]]
+                                elif(Runt_value == selected_card2):
+                                    selected_card4=Runt_value
+                                    selected_card2=sel[trick_values[2]]
+                                elif(Runt_value == selected_card3):
+                                    selected_card4=Runt_value
+                                    selected_card3=sel[trick_values[2]]
                     #combines all won tricks to form new hand
                     player1.hand = player1.trick_won[0] + player1.trick_won[1]+player1.trick_won[2]+selected_card1
                     player1.trick_won=[]
                     player2.hand = player2.trick_won[0] + player2.trick_won[1]+player2.trick_won[2]+selected_card2
                     player2.trick_won=[]
                     player3.hand = player3.trick_won[0] + player3.trick_won[1]+player3.trick_won[2]+selected_card3
+                    player3.trick_won=[]                    
+                    player4.hand = player4.trick_won[0] + player4.trick_won[1]+player4.trick_won[2]+player4.trick_won[3]+selected_card4
+                    player4.trick_won=[]
+                
+                elif i == 11 and game_type==3:
+                    player1.hand = player1.trick_won[0] + player1.trick_won[1]+player1.trick_won[2]
+                    player1.trick_won=[]
+                    player2.hand = player2.trick_won[0] + player2.trick_won[1]+player2.trick_won[2]
+                    player2.trick_won=[]
+                    player3.hand = player3.trick_won[0] + player3.trick_won[1]+player3.trick_won[2]
                     player3.trick_won=[]
-
-
-                    if game_type == 4:
-                        player4.hand = player4.trick_won[0] + player4.trick_won[1]+player4.trick_won[2]+player4.trick_won[3]+selected_card4
-                        player4.trick_won=[]
                 else:
                     if (game_type == 4):
                         print(name1, "and",name3,"are in Team A")
