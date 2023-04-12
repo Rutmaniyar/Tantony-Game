@@ -491,10 +491,12 @@ class trick:
                         print(f"The players are {player1.name}, {player2.name}, {player3.name}")
                     Trick_assign = str(
                         input("Do you want to keep the trick or give it to someone? ( 1 For Keep/ 2 for Give):"))
-                    if (Trick_assign == 1):
+                    if (Trick_assign == "1"):
+                        print("Keeping Trick")
                         player = trick.keeping_trick(
                             win_player, Trick_cards, Runt_value,player_points)
-                    if (Trick_assign == 2):
+                    if (Trick_assign == "2"):
+                        print("Giving Trick")
                         player = trick.assign_trick(Trick_cards, Runt_value,player_points)
 
             # Continuation of a Trick ( Merging all the tricks of a player )       
