@@ -489,7 +489,7 @@ class trick:
                         print(name2, "and",name4,"are in Team B")
                     else:
                         print(f"The players are {player1.name}, {player2.name}, {player3.name}")
-                    while true:
+                    while True:
                         Trick_assign = str(
                             input("Do you want to keep the trick or give it to someone? ( 1 For Keep/ 2 for Give):"))
                         if (Trick_assign == "1"):
@@ -583,7 +583,7 @@ def get_winning_card(cards):
 
 
 print("-------------------------------------------------------------------------------------------------")
-while true:
+while True:
     game_type = int(input(
         "Enter the Type of the Game: \n 4 for Partnership \n 3 for Three Player \n"))
     print("-------------------------------------------------------------------------------------------------")
