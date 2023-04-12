@@ -493,11 +493,16 @@ class trick:
                                         selected_card4=Runt_value
                                         selected_card3=sel[trick_values[2]]
                             player1.hand = player1.trick_won[0] + player1.trick_won[1]+player1.trick_won[2]+player1.trick_won[3]+selected_card1
+                            player1.trick_won=[]
                             player2.hand = player2.trick_won[0] + player2.trick_won[1]+player2.trick_won[2]+player2.trick_won[3]+selected_card2
+                            player2.trick_won=[]
                             player3.hand = player3.trick_won[0] + player3.trick_won[1]+player3.trick_won[2]+player3.trick_won[3]+selected_card3
+                            player3.trick_won=[]
+
 
                             if game_type == 4:
                                 player4.hand = player4.trick_won[0] + player4.trick_won[1]+player4.trick_won[2]+player4.trick_won[3]+selected_card4
+                                player4.trick_won=[]
                 else:
                     if (game_type == 4):
                         print(name1, "and",name3,"are in Team A")
