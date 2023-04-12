@@ -645,7 +645,7 @@ class trick:
                     player2.trick_won=[]
                     player3.hand = player3.trick_won[0] + player3.trick_won[1]+player3.trick_won[2]+selected_card3
                     player3.trick_won=[]                    
-                    player4.hand = player4.trick_won[0] + player4.trick_won[1]+player4.trick_won[2]+player4.trick_won[3]+selected_card4
+                    player4.hand = player4.trick_won[0] + player4.trick_won[1]+player4.trick_won[2]+selected_card4
                     player4.trick_won=[]
                 
                 elif i == 11 and game_type==3:
@@ -671,7 +671,7 @@ class trick:
                             break
                         elif (Trick_assign == "2"):
                             print("Giving Trick")
-                            player = trick.assign_trick(Trick_cards, Runt_value,player_points)
+                            player = trick.assign_trick(Trick_cards, Runt_value,player_points, win_player.name)
                             break
                         else:
                             print("Invalid Input")
@@ -731,13 +731,14 @@ def cond_suit(player, suit, selected_card_index):
             print("You have to play a card of the same suit")
             while True:
                 try:
+                    print(f"The Possible choices are ")
+                    for i in indices:
+                        print(f"{i+1} \t")
                     selected_card_index = int(input("Enter the position of the card you want to select: "))
                     return cond_suit(player, suit, selected_card_index)
                 except ValueError:
                     print("Please enter a number")
-                    continue
-                else:
-                    break    
+                    continue    
         
 def get_points(card):
     # print(card)
