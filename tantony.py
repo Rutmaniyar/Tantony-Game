@@ -640,11 +640,11 @@ class trick:
                                         selected_card4=Runt_value
                                         selected_card3=sel[trick_values[2]]
                     #combines all won tricks to form new hand
-                    player1.hand = player1.trick_won[0] + player1.trick_won[1]+player1.trick_won[2]+player1.trick_won[3]+selected_card1
+                    player1.hand = player1.trick_won[0] + player1.trick_won[1]+player1.trick_won[2]+selected_card1
                     player1.trick_won=[]
-                    player2.hand = player2.trick_won[0] + player2.trick_won[1]+player2.trick_won[2]+player2.trick_won[3]+selected_card2
+                    player2.hand = player2.trick_won[0] + player2.trick_won[1]+player2.trick_won[2]+selected_card2
                     player2.trick_won=[]
-                    player3.hand = player3.trick_won[0] + player3.trick_won[1]+player3.trick_won[2]+player3.trick_won[3]+selected_card3
+                    player3.hand = player3.trick_won[0] + player3.trick_won[1]+player3.trick_won[2]+selected_card3
                     player3.trick_won=[]
 
 
