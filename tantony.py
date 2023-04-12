@@ -64,26 +64,6 @@ class trick:
         self.RuntValue = RuntValue
         self.TrickCards = TrickCards
 
-    def last_trick(player1, player2, player3, player4, win_player, TrickCards, runt_value):
-        print("Last trick Winner:",win_player)
-        if (win_player.name != player1.name):
-            player1.trick_won.append(player1.hand)
-        else:
-            print(player2.Runt_Face, player3.Runt_Face, player4.Runt_Face)
-
-        if (win_player.name != player2.name):
-            player2.trick_won.append(player2.hand)
-        else:
-            print(player1.Runt_Face, player3.Runt_Face, player4.Runt_Face)
-        if (win_player.name != player3.name):
-            player3.trick_won.append(player3.hand)
-        else:
-            print(player1.Runt_Face, player2.Runt_Face, player4.Runt_Face)
-        if (win_player.name != player4.name):
-            player4.trick_won.append(player4.hand)
-        else:
-            print(player1.Runt_Face, player2.Runt_Face, player3.Runt_Face)
-
     def keeping_trick(player, TrickCards, runt_value,player_score):
         # Keeping the Trick
         # player_tricks = player#(player.name, player.hand)
@@ -441,7 +421,6 @@ class trick:
 
                 if (i == 12 and game_type == 4):
                     print("Last Trick:")
-                    #something = trick.last_trick(player1, player2, player3,player4, win_player, Trick_cards, Runt_value)
                     win_trick_score=get_points(Trick_cards[trick_values[2]])
                     rnt_value=get_points(Runt_value)
                     if win_trick_score > rnt_value:
@@ -492,17 +471,17 @@ class trick:
                                     elif(Runt_value == selected_card3):
                                         selected_card4=Runt_value
                                         selected_card3=sel[trick_values[2]]
-                            player1.hand = player1.trick_won[0] + player1.trick_won[1]+player1.trick_won[2]+player1.trick_won[3]+selected_card1
-                            player1.trick_won=[]
-                            player2.hand = player2.trick_won[0] + player2.trick_won[1]+player2.trick_won[2]+player2.trick_won[3]+selected_card2
-                            player2.trick_won=[]
-                            player3.hand = player3.trick_won[0] + player3.trick_won[1]+player3.trick_won[2]+player3.trick_won[3]+selected_card3
-                            player3.trick_won=[]
+                    player1.hand = player1.trick_won[0] + player1.trick_won[1]+player1.trick_won[2]+player1.trick_won[3]+selected_card1
+                    player1.trick_won=[]
+                    player2.hand = player2.trick_won[0] + player2.trick_won[1]+player2.trick_won[2]+player2.trick_won[3]+selected_card2
+                    player2.trick_won=[]
+                    player3.hand = player3.trick_won[0] + player3.trick_won[1]+player3.trick_won[2]+player3.trick_won[3]+selected_card3
+                    player3.trick_won=[]
 
 
-                            if game_type == 4:
-                                player4.hand = player4.trick_won[0] + player4.trick_won[1]+player4.trick_won[2]+player4.trick_won[3]+selected_card4
-                                player4.trick_won=[]
+                    if game_type == 4:
+                        player4.hand = player4.trick_won[0] + player4.trick_won[1]+player4.trick_won[2]+player4.trick_won[3]+selected_card4
+                        player4.trick_won=[]
                 else:
                     if (game_type == 4):
                         print(name1, "and",name3,"are in Team A")
