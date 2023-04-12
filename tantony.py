@@ -489,15 +489,21 @@ class trick:
                         print(name2, "and",name4,"are in Team B")
                     else:
                         print(f"The players are {player1.name}, {player2.name}, {player3.name}")
-                    Trick_assign = str(
-                        input("Do you want to keep the trick or give it to someone? ( 1 For Keep/ 2 for Give):"))
-                    if (Trick_assign == "1"):
-                        print("Keeping Trick")
-                        player = trick.keeping_trick(
-                            win_player, Trick_cards, Runt_value,player_points)
-                    if (Trick_assign == "2"):
-                        print("Giving Trick")
-                        player = trick.assign_trick(Trick_cards, Runt_value,player_points)
+                    while true:
+                        Trick_assign = str(
+                            input("Do you want to keep the trick or give it to someone? ( 1 For Keep/ 2 for Give):"))
+                        if (Trick_assign == "1"):
+                            print("Keeping Trick")
+                            player = trick.keeping_trick(
+                                win_player, Trick_cards, Runt_value,player_points)
+                            break
+                        elif (Trick_assign == "2"):
+                            print("Giving Trick")
+                            player = trick.assign_trick(Trick_cards, Runt_value,player_points)
+                            break
+                        else:
+                            print("Invalid Input")
+                            continue
 
             # Continuation of a Trick ( Merging all the tricks of a player )       
             player1.individual_score = sum(player1.individual_score)
@@ -577,13 +583,19 @@ def get_winning_card(cards):
 
 
 print("-------------------------------------------------------------------------------------------------")
-game_type = int(input(
-    "Enter the Type of the Game: \n 4 for Partnership \n 3 for Three Player \n"))
-print("-------------------------------------------------------------------------------------------------")
-if game_type == 4:
-    num_cards = 13
-else:
-    num_cards = 12
+while true:
+    game_type = int(input(
+        "Enter the Type of the Game: \n 4 for Partnership \n 3 for Three Player \n"))
+    print("-------------------------------------------------------------------------------------------------")
+    if game_type == 4:
+        num_cards = 13
+        break
+    elif game_type == 3:
+        num_cards = 12
+        break
+    else:
+        print("Invalid Input")
+        continue
 
 
 print("-------------------------------------------------------------------------------------------------")
