@@ -441,9 +441,63 @@ class trick:
 
                 if (i == 12 and game_type == 4):
                     print("Last Trick:")
-                    something = trick.last_trick(player1, player2, player3,
-                                     player4, win_player, Trick_cards, Runt_value)
-                    print(something)
+                    #something = trick.last_trick(player1, player2, player3,player4, win_player, Trick_cards, Runt_value)
+                    win_trick_score=get_points(Trick_cards[trick_values[2]])
+                    rnt_value=get_points(Runt_value)
+                    if win_trick_score > rnt_value:
+                        ch=input("Do you want to swap the runt with the Lowest card? (1 for Yes/ 2 for No):")
+                        if ch==1:
+                            if (sel[trick_values[2]] == selected_card1):
+                                if (Runt_value == selected_card2):
+                                    selected_card1=Runt_value
+                                    selected_card2=sel[trick_values[2]]
+                                elif(Runt_value == selected_card3):
+                                    selected_card1=Runt_value
+                                    selected_card3=sel[trick_values[2]]
+                                elif(Runt_value == selected_card4 and game_type ==4):
+                                    selected_card1=Runt_value
+                                    selected_card4=sel[trick_values[2]]
+
+                                
+                            if (sel[trick_values[2]] == selected_card2):
+                                if (Runt_value == selected_card1):
+                                    selected_card2=Runt_value
+                                    selected_card1=sel[trick_values[2]]
+                                elif(Runt_value == selected_card3):
+                                    selected_card2=Runt_value
+                                    selected_card3=sel[trick_values[2]]
+                                elif(Runt_value == selected_card4 and game_type ==4):
+                                    selected_card2=Runt_value
+                                    selected_card4=sel[trick_values[2]]
+
+                            if (sel[trick_values[2]] == selected_card3):
+                                if (Runt_value == selected_card1):
+                                    selected_card3=Runt_value
+                                    selected_card1=sel[trick_values[2]]
+                                elif(Runt_value == selected_card2):
+                                    selected_card3=Runt_value
+                                    selected_card2=sel[trick_values[2]]
+                                elif(Runt_value == selected_card4 and game_type ==4):
+                                    selected_card3=Runt_value
+                                    selected_card4=sel[trick_values[2]]
+
+                            if game_type == 4:
+                                if (sel[trick_values[2]] == selected_card4):
+                                    if (Runt_value == selected_card1):
+                                        selected_card4=Runt_value
+                                        selected_card1=sel[trick_values[2]]
+                                    elif(Runt_value == selected_card2):
+                                        selected_card4=Runt_value
+                                        selected_card2=sel[trick_values[2]]
+                                    elif(Runt_value == selected_card3):
+                                        selected_card4=Runt_value
+                                        selected_card3=sel[trick_values[2]]
+                            player1.hand = player1.trick_won[0] + player1.trick_won[1]+player1.trick_won[2]+player1.trick_won[3]+selected_card1
+                            player2.hand = player2.trick_won[0] + player2.trick_won[1]+player2.trick_won[2]+player2.trick_won[3]+selected_card2
+                            player3.hand = player3.trick_won[0] + player3.trick_won[1]+player3.trick_won[2]+player3.trick_won[3]+selected_card3
+
+                            if game_type == 4:
+                                player4.hand = player4.trick_won[0] + player4.trick_won[1]+player4.trick_won[2]+player4.trick_won[3]+selected_card4
                 else:
                     if (game_type == 4):
                         print(name1, "and",name3,"are in Team A")
@@ -460,12 +514,7 @@ class trick:
 
             # Continuation of a Trick ( Merging all the tricks of a player )
             
-            player1.hand = player1.trick_won[0] + player1.trick_won[1]+player1.trick_won[2]+player1.trick_won[3]
-            player2.hand = player2.trick_won[0] + player2.trick_won[1]+player2.trick_won[2]+player2.trick_won[3]
-            player3.hand = player3.trick_won[0] + player3.trick_won[1]+player3.trick_won[2]+player3.trick_won[3]
-
-            if game_type == 4:
-                player4.hand = player4.trick_won[0] + player4.trick_won[1]+player4.trick_won[2]+player4.trick_won[3]
+           
             
             player1.individual_score = sum(player1.individual_score)
             player2.individual_score = sum(player2.individual_score)
