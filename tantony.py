@@ -3,7 +3,7 @@ import random
 
 class Deck:
     def __init__(self):
-        suits = ["\u2764\ufe0f", "\u2666", "\U00002660", "\u2663"]
+        suits = ["\u2764", "\u2666", "\U00002660", "\u2663"]
         if (game_type == 4):
             ranks = ["Ace", "2", "3", "4", "5", "6", "7",
                      "8", "9", "10", "Jack", "Queen", "King"]
@@ -32,7 +32,7 @@ class Player:
     def iterate_hand(self):
         for i, card in enumerate(self.hand.hand):
             print(f"{i+1}. {card}")
-
+    
 class Hand:
     def __init__(self, deck, cards_per_hand):
         self.hand = [deck.draw() for _ in range(cards_per_hand)]
@@ -92,10 +92,10 @@ class trick:
             print("You already have three tricks Please give it to any other player")
             return trick.assign_trick(TrickCards, runt_value,player_score)
 
-    def assign_trick(TrickCards, runt_value,player_score):
+    def assign_trick(TrickCards, runt_value,player_score,player_name):
         # player.trick_won.append[TrickCards]
-        assigned_to = str(
-            input("Enter the name of the player you want to assign the trick:"))
+        assigned_to = check_names(str(input("Enter the name of the player you want to assign the trick:")),player_name)     
+
         if (assigned_to == player1.name):
             if (len(player1.trick_won) <= 2):
                 player1.trick_won.append(TrickCards)
@@ -189,212 +189,380 @@ class trick:
                 print(
                     "-----------------------------------------------------------------------------------------------")
                 print("Hand:", i+1)
+                suite=""
                 if (player.name == player1.name):
                     print(
                         "-----------------------------------------------------------------------------------------------")
-                    print(player1.name, "Turn")
+                    print(f"Player {player1.name}'s Turn")
                     #print(f"Cards in Hand for {player1.name} \n {player1.iterate_hand()}")
                     player1.iterate_hand()
-                    selected_card1_index = int(
-                        input("Enter the position of the card you want to select: "))
-                    selected_card1 = player1.hand.select_card(
-                        selected_card1_index-1)
-                    sel.append(selected_card1)
-                    suite=selected_card1.suit
-                    print(f"The selected card is :{selected_card1}")
+                    while True:
+                        try:
+                            selected_card1_index = int(
+                                input("Enter the position of the card you want to select: "))
+                            selected_card1 = player1.hand.select_card(
+                                selected_card1_index-1)
+                            sel.append(selected_card1)
+                            suite=selected_card1.suit
+                            print(f"The selected card is :{selected_card1}")
+                        except ValueError:
+                            print("Please enter a valid number")
+                            continue
+                        except IndexError:
+                            print("Please enter a valid number")
+                            continue
+                        else:
+                            break
                     print(
                         "-----------------------------------------------------------------------------------------------")
-                    print(player2.name, "Turn")
+                    print(f"Player {player2.name}'s Turn")
                     #print(f"Cards in Hand for {player2.name} \n {player2.iterate_hand()}")
                     player2.iterate_hand()
-                    selected_card2_index = int(
-                        input("Enter the position of the card you want to select: "))
-                    selected_card2_index=cond_suit(player2, suite, selected_card2_index)
-                    selected_card2 = player2.hand.select_card(
-                        selected_card2_index-1)
-                    print(f"The selected card is :{selected_card2}")
-                    sel.append(selected_card2)
+                    while True:
+                        try:
+                            selected_card2_index = int(
+                                input("Enter the position of the card you want to select: "))
+                            selected_card2_index=cond_suit(player2, suite, selected_card2_index)
+                            selected_card2 = player2.hand.select_card(
+                                selected_card2_index-1)
+                            print(f"The selected card is :{selected_card2}")
+                            sel.append(selected_card2)
+                        except ValueError:
+                            print("Please enter a valid number")
+                            continue
+                        except IndexError:
+                            print("Please enter a valid number")
+                            continue
+                        else:
+                            break
                     print(
                         "-----------------------------------------------------------------------------------------------")
-                    print(player3.name, "Turn")
+                    print(f"Player {player3.name}'s Turn")
                     #print(f"Cards in Hand for {player3.name} \n {player3.iterate_hand()}")
                     player3.iterate_hand()
-                    selected_card3_index = int(
-                        input("Enter the position of the card you want to select: "))
-                    selected_card3_index=cond_suit(player3, suite, selected_card3_index)
-                    selected_card3 = player3.hand.select_card(
-                        selected_card3_index-1)
-                    print(f"The selected card is :{selected_card3}")
-                    sel.append(selected_card3)
+                    while True:
+                        try:
+                            selected_card3_index = int(
+                                input("Enter the position of the card you want to select: "))
+                            selected_card3_index=cond_suit(player3, suite, selected_card3_index)
+                            selected_card3 = player3.hand.select_card(
+                                selected_card3_index-1)
+                            print(f"The selected card is :{selected_card3}")
+                            sel.append(selected_card3)
+                        except ValueError:
+                            print("Please enter a valid number")
+                            continue
+                        except IndexError:
+                            print("Please enter a valid number")
+                            continue
+                        else:
+                            break
+                    
                     print(
                         "-----------------------------------------------------------------------------------------------")
                     if game_type == 4:
-                        print(player4.name, "Turn")
+                        print(f"Player {player4.name}'s Turn")
                         #print(f"Cards in Hand for{player4.name} \n{player4.iterate_hand()}")
                         player4.iterate_hand()
-                        selected_card4_index = int(
-                            input("Enter the position of the card you want to select: "))
-                        selected_card4_index=cond_suit(player4, suite, selected_card4_index)
-                        selected_card4 = player4.hand.select_card(selected_card4_index-1)
-                        print(f"The selected card is :{selected_card4}")
-                        sel.append(selected_card4)
+                        while True:
+                            try:
+                                selected_card4_index = int(
+                                    input("Enter the position of the card you want to select: "))
+                                selected_card4_index=cond_suit(player4, suite, selected_card4_index)
+                                selected_card4 = player4.hand.select_card(
+                                    selected_card4_index-1)
+                                print(f"The selected card is :{selected_card4}")
+                                sel.append(selected_card4)
+                            except ValueError:
+                                print("Please enter a valid number")
+                                continue
+                            except IndexError:
+                                print("Please enter a valid number")
+                                continue
+                            else:
+                                break
                         print(
                             "-----------------------------------------------------------------------------------------------")
                 if (player.name == player2.name):
                     print(
                         "-----------------------------------------------------------------------------------------------")
-                    print(player2.name, "Turn")
+                    print(f"Player {player2.name}'s Turn")
                     #print(f"Cards in Hand for {player2.name} \n {player2.iterate_hand()}")
                     player2.iterate_hand()
-                    selected_card2_index = int(
-                        input("Enter the position of the card you want to select: "))
-                    selected_card2 = player2.hand.select_card(
-                        selected_card2_index-1)
-                    print(f"The selected card is :{selected_card2}")
-                    sel.append(selected_card2)
-                    suite=selected_card2.suit
+                    while True:
+                        try:
+                            selected_card2_index = int(
+                                input("Enter the position of the card you want to select: "))
+                            selected_card2 = player2.hand.select_card(
+                                selected_card2_index-1)
+                            sel.append(selected_card2)
+                            suite=selected_card2.suit
+                            print(f"The selected card is :{selected_card2}")
+                        except ValueError:
+                            print("Please enter a valid number")
+                            continue
+                        except IndexError:
+                            print("Please enter a valid number")
+                            continue
+                        else:
+                            break
                     print(
                         "-----------------------------------------------------------------------------------------------")
-                    print(player3.name, "Turn")
+                    print(f"Player {player3.name}'s Turn")
                     #print(f"Cards in Hand for {player3.name} \n {player3.iterate_hand()}")
                     player3.iterate_hand()
-                    selected_card3_index = int(
-                        input("Enter the position of the card you want to select: "))
-                    selected_card3_index=cond_suit(player3, suite, selected_card3_index)
-                    selected_card3 = player3.hand.select_card(
-                        selected_card3_index-1)
-                    print(f"The selected card is :{selected_card3}")
-                    sel.append(selected_card3)
+                    while True:
+                        try:
+                            selected_card3_index = int(
+                                input("Enter the position of the card you want to select: "))
+                            selected_card3_index=cond_suit(player3, suite, selected_card3_index)
+                            selected_card3 = player3.hand.select_card(
+                                selected_card3_index-1)
+                            print(f"The selected card is :{selected_card3}")
+                            sel.append(selected_card3)
+                        except ValueError:
+                            print("Please enter a valid number")
+                            continue
+                        except IndexError:
+                            print("Please enter a valid number")
+                            continue
+                        else:
+                            break
+
                     print(
                         "-----------------------------------------------------------------------------------------------")
 
                     if game_type == 4:
-                        print(player4.name, "Turn")
+                        print(f"Player {player4.name}'s Turn")
                         #print(f"Cards in Hand for {player4.name} \n {player4.iterate_hand()}")
                         player4.iterate_hand()
-                        selected_card4_index = int(
-                            input("Enter the position of the card you want to select: "))
-                        selected_card4_index=cond_suit(player4, suite, selected_card4_index)
-                        selected_card4 = player4.hand.select_card(
-                            selected_card4_index-1)
-                        print(f"The selected card is :{selected_card4}")
-                        sel.append(selected_card4)
+                        while True:
+                            try:
+                                selected_card4_index = int(
+                                    input("Enter the position of the card you want to select: "))
+                                selected_card4_index=cond_suit(player4, suite, selected_card4_index)
+                                selected_card4 = player4.hand.select_card(
+                                    selected_card4_index-1)
+                                print(f"The selected card is :{selected_card4}")
+                                sel.append(selected_card4)
+                            except ValueError:
+                                print("Please enter a valid number")
+                                continue
+                            except IndexError:
+                                print("Please enter a valid number")
+                                continue
+                            else:
+                                break
                         print(
                             "-----------------------------------------------------------------------------------------------")
-                    print(player1.name, "Turn")
+                    print(f"Player {player1.name}'s Turn")
                     #print(f"Cards in Hand for {player1.name} \n {player1.iterate_hand()}")
                     player1.iterate_hand()
-                    selected_card1_index = int(
-                        input("Enter the position of the card you want to select: "))
-                    selected_card1_index=cond_suit(player1, suite, selected_card1_index)
-                    selected_card1 = player1.hand.select_card(
-                        selected_card1_index-1)
-                    print(f"The selected card is :{selected_card1}")
-                    sel.append(selected_card1)
+                    while True:
+                        try:
+                            selected_card1_index = int(
+                                input("Enter the position of the card you want to select: "))
+                            selected_card1_index=cond_suit(player1, suite, selected_card1_index)
+                            selected_card1 = player1.hand.select_card(
+                                selected_card1_index-1)
+                            print(f"The selected card is :{selected_card1}")
+                            sel.append(selected_card1)
+                        except ValueError:
+                            print("Please enter a valid number")
+                            continue
+                        except IndexError:
+                            print("Please enter a valid number")
+                            continue
+                        else:
+                            break
                     print(
                         "-----------------------------------------------------------------------------------------------")
                 if (player.name == player3.name):
                     print(
                         "-----------------------------------------------------------------------------------------------")
-                    print(player3.name, "Turn")
+                    print(f"Player {player3.name}'s Turn")
                     #print(f"Cards in Hand for {player3.name} \n {player3.iterate_hand()}")
                     player3.iterate_hand()
-                    selected_card3_index = int(
-                        input("Enter the position of the card you want to select: "))
-                    selected_card3 = player3.hand.select_card(
-                        selected_card3_index-1)
-                    print(f"The selected card is :{selected_card3}")
-                    sel.append(selected_card3)
-                    suite=selected_card3.suit
-
+                    while True:
+                        try:
+                            selected_card3_index = int(
+                                input("Enter the position of the card you want to select: "))
+                            selected_card3 = player3.hand.select_card(
+                                selected_card3_index-1)
+                            print(f"The selected card is :{selected_card3}")
+                            sel.append(selected_card3)
+                            suite=selected_card3.suit
+                        except ValueError:
+                            print("Please enter a valid number")
+                            continue
+                        except IndexError:
+                            print("Please enter a valid number")
+                            continue
+                        else:
+                            break
+                    
                     if game_type == 4:
-                        print(player4.name, "Turn")
+                        print(f"Player {player4.name}'s Turn")
                         #print(f"Cards in Hand for {player4.name} \n {player4.iterate_hand()}")
                         player4.iterate_hand()
-                        selected_card4_index = int(
-                            input("Enter the position of the card you want to select: "))
-                        selected_card4_index=cond_suit(player4, suite, selected_card4_index)
-                        selected_card4 = player4.hand.select_card(
-                            selected_card4_index-1)
-                        print(f"The selected card is :{selected_card4}")
-                        sel.append(selected_card4)
+                        while True:
+                            try:
+                                selected_card4_index = int(
+                                    input("Enter the position of the card you want to select: "))
+                                selected_card4_index=cond_suit(player4, suite, selected_card4_index)
+                                selected_card4 = player4.hand.select_card(
+                                    selected_card4_index-1)
+                                print(f"The selected card is :{selected_card4}")
+                                sel.append(selected_card4)
+                            except ValueError:
+                                print("Please enter a valid number")
+                                continue
+                            except IndexError:
+                                print("Please enter a valid number")
+                                continue
+                            else:
+                                break
                         print(
                             "-----------------------------------------------------------------------------------------------")
 
-                    print(player1.name, "Turn")
+                    print(f"Player {player1.name}'s Turn")
                     #print(f"Cards in Hand for {player4.name} \n {player4.iterate_hand()}")
                     player1.iterate_hand()
-                    selected_card1_index = int(
-                        input("Enter the position of the card you want to select: "))
-                    selected_card1_index=cond_suit(player1, suite, selected_card1_index)
-                    selected_card1 = player1.hand.select_card(
-                        selected_card1_index-1)
-                    print(f"The selected card is :{selected_card1}")
-                    sel.append(selected_card1)
+                    while True:
+                        try:
+                            selected_card1_index = int(
+                                input("Enter the position of the card you want to select: "))
+                            selected_card1_index=cond_suit(player1, suite, selected_card1_index)
+                            selected_card1 = player1.hand.select_card(
+                                selected_card1_index-1)
+                            print(f"The selected card is :{selected_card1}")
+                            sel.append(selected_card1)
+                        except ValueError:
+                            print("Please enter a valid number")
+                            continue
+                        except IndexError:
+                            print("Please enter a valid number")
+                            continue
+                        else:
+                            break
                     print(
                         "-----------------------------------------------------------------------------------------------")
-                    print(player2.name, "Turn")
+                    print(f"Player {player2.name}'s Turn")
                     #print(f"Cards in Hand for {player2.name} \n {player2.iterate_hand()}")
                     player2.iterate_hand()
-                    selected_card2_index = int(
-                        input("Enter the position of the card you want to select: "))
-                    selected_card2_index=cond_suit(player2, suite, selected_card2_index)
-                    selected_card2 = player2.hand.select_card(
-                        selected_card2_index-1)
-                    print(f"The selected card is :{selected_card2}")
-                    sel.append(selected_card2)
+                    while True:
+                        try:
+                            selected_card2_index = int(
+                                input("Enter the position of the card you want to select: "))
+                            selected_card2_index=cond_suit(player2, suite, selected_card2_index)
+                            selected_card2 = player2.hand.select_card(
+                                selected_card2_index-1)
+                            print(f"The selected card is :{selected_card2}")
+                            sel.append(selected_card2)
+                        except ValueError:
+                            print("Please enter a valid number")
+                            continue
+                        except IndexError:
+                            print("Please enter a valid number")
+                            continue
+                        else:
+                            break
                     print(
                         "-----------------------------------------------------------------------------------------------")
                 if game_type == 4:
                     if (player.name == player4.name):
                         print(
                             "-----------------------------------------------------------------------------------------------")
-                        print(player4.name, "Turn")
+                        print(f"Player {player4.name}'s Turn")
                         #print(f"Cards in Hand for {player4.name} \n {player4.iterate_hand()}")
                         player4.iterate_hand()
-                        selected_card4_index = int(
-                            input("Enter the position of the card you want to select: "))
-                        selected_card4 = player4.hand.select_card(
-                            selected_card4_index-1)
-                        print(f"The selected card is :{selected_card4}")
-                        sel.append(selected_card4)
-                        suite=selected_card4.suit
+                        while True:
+                            try:
+                                selected_card4_index = int(
+                                    input("Enter the position of the card you want to select: "))
+                                selected_card4 = player4.hand.select_card(
+                                    selected_card4_index-1)
+                                suite=selected_card4.suit
+                                print(f"The selected card is :{selected_card4}")
+                                sel.append(selected_card4)
+                                
+                            except ValueError:
+                                print("Please enter a valid number")
+                                continue
+                            except IndexError:
+                                print("Please enter a valid number")
+                                continue
+                            else:
+                                break
+                        
                         print(
                             "-----------------------------------------------------------------------------------------------")
-                        print(player1.name, "Turn")
+                        print(f"Player {player1.name}'s Turn")
                         #print(f"Cards in Hand for {player1.name} \n {player1.iterate_hand()}")
                         player1.iterate_hand()
-                        selected_card1_index = int(
-                            input("Enter the position of the card you want to select: "))
-                        selected_card1_index=cond_suit(player1, suite, selected_card1_index)
-                        selected_card1 = player1.hand.select_card(
-                            selected_card1_index-1)
-                        print(f"The selected card is :{selected_card1}")
-                        sel.append(selected_card1)
+                        while True:
+                            try:
+                                selected_card1_index = int(
+                                    input("Enter the position of the card you want to select: "))
+                                selected_card1_index=cond_suit(player1, suite, selected_card1_index)
+                                selected_card1 = player1.hand.select_card(
+                                    selected_card1_index-1)
+                                print(f"The selected card is :{selected_card1}")
+                                sel.append(selected_card1)
+                            except ValueError:
+                                print("Please enter a valid number")
+                                continue
+                            except IndexError:
+                                print("Please enter a valid number")
+                                continue
+                            else:
+                                break
+                        
                         print(
                             "-----------------------------------------------------------------------------------------------")
-                        print(player2.name, "Turn")
+                        print(f"Player {player2.name}'s Turn")
                         #print(f"Cards in Hand for {player2.name} \n {player2.iterate_hand()}")
                         player2.iterate_hand()
-                        selected_card2_index = int(
-                            input("Enter the position of the card you want to select: "))
-                        selected_card2_index=cond_suit(player2, suite, selected_card2_index)
-                        selected_card2 = player2.hand.select_card(
-                            selected_card2_index-1)
-                        print(f"The selected card is :{selected_card2}")
-                        sel.append(selected_card2)
+                        while True:
+                            try:
+                                selected_card2_index = int(
+                                    input("Enter the position of the card you want to select: "))
+                                selected_card2_index=cond_suit(player2, suite, selected_card2_index)
+                                selected_card2 = player2.hand.select_card(
+                                    selected_card2_index-1)
+                                print(f"The selected card is :{selected_card2}")
+                                sel.append(selected_card2)
+                            except ValueError:
+                                print("Please enter a valid number")
+                                continue
+                            except IndexError:
+                                print("Please enter a valid number")
+                                continue
+                            else:
+                                break
+                        
                         print(
                             "-----------------------------------------------------------------------------------------------")
-                        print(player3.name, "Turn")
+                        print(f"Player {player3.name}'s Turn")
                         #print(f"Cards in Hand for {player3.name} \n {player3.iterate_hand()}")
                         player3.iterate_hand()
-                        selected_card3_index = int(
-                            input("Enter the position of the card you want to select: "))
-                        selected_card3_index=cond_suit(player3, suite, selected_card3_index)
-                        selected_card3 = player3.hand.select_card(
-                            selected_card3_index-1)
-                        print(f"The selected card is :{selected_card3}")
-                        sel.append(selected_card3)
+                        while True:
+                            try:
+                                selected_card3_index = int(
+                                    input("Enter the position of the card you want to select: "))
+                                selected_card3_index=cond_suit(player3, suite, selected_card3_index)
+                                selected_card3 = player3.hand.select_card(
+                                    selected_card3_index-1)
+                                print(f"The selected card is :{selected_card3}")
+                                sel.append(selected_card3)
+                            except ValueError:
+                                print("Please enter a valid number")
+                                continue
+                            except IndexError:
+                                print("Please enter a valid number")
+                                continue
+                            else:
+                                break
                         print(
                             "-----------------------------------------------------------------------------------------------")
 
@@ -472,11 +640,11 @@ class trick:
                                         selected_card4=Runt_value
                                         selected_card3=sel[trick_values[2]]
                     #combines all won tricks to form new hand
-                    player1.hand = player1.trick_won[0] + player1.trick_won[1]+player1.trick_won[2]+player1.trick_won[3]+selected_card1
+                    player1.hand = player1.trick_won[0] + player1.trick_won[1]+player1.trick_won[2]+selected_card1
                     player1.trick_won=[]
-                    player2.hand = player2.trick_won[0] + player2.trick_won[1]+player2.trick_won[2]+player2.trick_won[3]+selected_card2
+                    player2.hand = player2.trick_won[0] + player2.trick_won[1]+player2.trick_won[2]+selected_card2
                     player2.trick_won=[]
-                    player3.hand = player3.trick_won[0] + player3.trick_won[1]+player3.trick_won[2]+player3.trick_won[3]+selected_card3
+                    player3.hand = player3.trick_won[0] + player3.trick_won[1]+player3.trick_won[2]+selected_card3
                     player3.trick_won=[]
 
 
@@ -534,6 +702,20 @@ def check_suit(player, suit):
             indices.append(i)
     return indices
 
+def check_names(name, play_name):
+    if name in Names and name != play_name:
+        return str(name)
+    elif name != play_name:
+        print("Cannot assign it to Yourself \n \n")
+        while True:
+            name = input("Enter the name of the player you want to assign the trick: ")
+            return check_names(name, play_name)
+    else:
+        print("Please enter a valid name \n \n")
+        while True:
+            name = input("Enter the name of the player you want to assign the trick:")
+            return check_names(name)
+
 def cond_suit(player, suit, selected_card_index):
     if player.hand.get_card(selected_card_index-1).suit == suit:
         return selected_card_index
@@ -543,9 +725,15 @@ def cond_suit(player, suit, selected_card_index):
             return selected_card_index
         else:
             print("You have to play a card of the same suit")
-            selected_card_index = int(
-                input("Enter the position of the card you want to select: "))
-            return cond_suit(player, suit, selected_card_index)
+            while True:
+                try:
+                    selected_card_index = int(input("Enter the position of the card you want to select: "))
+                    return cond_suit(player, suit, selected_card_index)
+                except ValueError:
+                    print("Please enter a number")
+                    continue
+                else:
+                    break    
         
 def get_points(card):
     # print(card)
@@ -609,6 +797,9 @@ if num_cards == 13:
     print(name2, "and",name4,"are in Team B")
 print("-------------------------------------------------------------------------------------------------")
 
+Names=[name1,name2,name3]
+if num_cards == 13:
+    Names.append(name4)
 
 def cutting_for_dealer(game_type, Listplayer):
     Leader_cards = []
