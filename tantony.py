@@ -718,7 +718,7 @@ def check_names(name, play_name):
         print("Please enter a valid name \n \n")
         while True:
             name = input("Enter the name of the player you want to assign the trick:")
-            return check_names(name)
+            return check_names(name, play_name)
 
 def cond_suit(player, suit, selected_card_index):
     if player.hand.get_card(selected_card_index-1).suit == suit:
