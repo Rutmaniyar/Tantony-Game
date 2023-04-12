@@ -517,10 +517,7 @@ class trick:
                     if (Trick_assign == 2):
                         player = trick.assign_trick(Trick_cards, Runt_value,player_points)
 
-            # Continuation of a Trick ( Merging all the tricks of a player )
-            
-           
-            
+            # Continuation of a Trick ( Merging all the tricks of a player )       
             player1.individual_score = sum(player1.individual_score)
             player2.individual_score = sum(player2.individual_score)
             player3.individual_score = sum(player3.individual_score)
