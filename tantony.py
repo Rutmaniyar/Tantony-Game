@@ -82,7 +82,7 @@ class trick:
                 print(f"The Runt faces are {player.Runt_Face}")
                 return player
             else:
-                print("You already have three tricks Please give it to any other player")
+                print("\nYou already have three tricks Please give it to any other player")
                 return trick.assign_trick(TrickCards, runt_value,player_score, player.name)
 
         if (len(player.trick_won) <= 2):
@@ -94,7 +94,7 @@ class trick:
             print(f"The Runt faces are {player.Runt_Face}")
             return player
         else:
-            print("You already have three tricks Please give it to any other player")
+            print("\nYou already have three tricks Please give it to any other player")
             return trick.assign_trick(TrickCards, runt_value,player_score, player.name)
 
     def assign_trick(TrickCards, runt_value,player_score,player_name):
@@ -113,7 +113,7 @@ class trick:
                     return player1
                 else:
                     print(
-                        "The Player already has three tricks you have to give to other player")
+                        "\nThe Player already has three tricks you have to give to other player")
                     return trick.assign_trick(TrickCards, runt_value,player_score, player_name)
             if (assigned_to == player2.name):
                 if (len(player2.trick_won) <= 2):
@@ -126,7 +126,7 @@ class trick:
                     return player2
                 else:
                     print(
-                        "The Player already has three tricks you have to give to other player")
+                        "\nThe Player already has three tricks you have to give to other player")
                     return trick.assign_trick(TrickCards, runt_value,player_score, player_name)
             if (assigned_to == player3.name):
                 if (len(player3.trick_won) <= 2):
@@ -139,7 +139,7 @@ class trick:
                     return player3
                 else:
                     print(
-                        "The Player already has three tricks you have to give to other player")
+                        "\nThe Player already has three tricks you have to give to other player")
                     return trick.assign_trick(TrickCards, runt_value,player_score, player_name)
             if (assigned_to == player4.name ):
                 if (len(player4.trick_won) <= 2):
@@ -152,7 +152,7 @@ class trick:
                     return player4
                 else:
                     print(
-                        "The Player already has three tricks you have to give to other player")
+                        "\nThe Player already has three tricks you have to give to other player")
                     return trick.assign_trick(TrickCards, runt_value,player_score, player_name)
         # For 3 Player Version
         if (game_type == 3):
@@ -168,7 +168,7 @@ class trick:
                     return player1
                 else:
                     print(
-                        "The Player already has three tricks you have to give to other player")
+                        "\nThe Player already has three tricks you have to give to other player")
                     return trick.assign_trick(TrickCards, runt_value,player_score, player_name)
             if (assigned_to == player2.name):
                 if (len(player2.trick_won) <= 3):
@@ -181,7 +181,7 @@ class trick:
                     return player2
                 else:
                     print(
-                        "The Player already has three tricks you have to give to other player")
+                        "\nThe Player already has three tricks you have to give to other player")
                     return trick.assign_trick(TrickCards, runt_value,player_score, player_name)
             if (assigned_to == player3.name):
                 if (len(player3.trick_won) <= 3):
@@ -194,7 +194,7 @@ class trick:
                     return player3
                 else:
                     print(
-                        "The Player already has three tricks you have to give to other player")
+                        "\nThe Player already has three tricks you have to give to other player")
                     return trick.assign_trick(TrickCards, runt_value,player_score, player_name)
 
     def playingtrick(player):
@@ -215,7 +215,7 @@ class trick:
                     print(
                         "-----------------------------------------------------------------------------------------------")
                     print(f"Player {player1.name}'s Turn")
-                    #print(f"Cards in Hand for {player1.name} \n {player1.iterate_hand()}")
+                    
                     player1.iterate_hand()
                     while True:
                         try:
@@ -225,7 +225,7 @@ class trick:
                                 selected_card1_index-1)
                             sel.append(selected_card1)
                             suite=selected_card1.suit
-                            print(f"The selected card is :{selected_card1}")
+                            print(f"\nThe selected card is :{selected_card1}")
                         except ValueError:
                             print("Please enter a valid number")
                             continue
@@ -237,7 +237,7 @@ class trick:
                     print(
                         "-----------------------------------------------------------------------------------------------")
                     print(f"Player {player2.name}'s Turn")
-                    #print(f"Cards in Hand for {player2.name} \n {player2.iterate_hand()}")
+                    
                     player2.iterate_hand()
                     while True:
                         try:
@@ -246,7 +246,7 @@ class trick:
                             selected_card2_index=cond_suit(player2, suite, selected_card2_index)
                             selected_card2 = player2.hand.select_card(
                                 selected_card2_index-1)
-                            print(f"The selected card is :{selected_card2}")
+                            print(f"\nThe selected card is :{selected_card2}")
                             sel.append(selected_card2)
                         except ValueError:
                             print("Please enter a valid number")
@@ -259,7 +259,7 @@ class trick:
                     print(
                         "-----------------------------------------------------------------------------------------------")
                     print(f"Player {player3.name}'s Turn")
-                    #print(f"Cards in Hand for {player3.name} \n {player3.iterate_hand()}")
+                    
                     player3.iterate_hand()
                     while True:
                         try:
@@ -268,7 +268,7 @@ class trick:
                             selected_card3_index=cond_suit(player3, suite, selected_card3_index)
                             selected_card3 = player3.hand.select_card(
                                 selected_card3_index-1)
-                            print(f"The selected card is :{selected_card3}")
+                            print(f"\nThe selected card is :{selected_card3}")
                             sel.append(selected_card3)
                         except ValueError:
                             print("Please enter a valid number")
@@ -283,7 +283,7 @@ class trick:
                         "-----------------------------------------------------------------------------------------------")
                     if game_type == 4:
                         print(f"Player {player4.name}'s Turn")
-                        #print(f"Cards in Hand for{player4.name} \n{player4.iterate_hand()}")
+                        
                         player4.iterate_hand()
                         while True:
                             try:
@@ -292,7 +292,7 @@ class trick:
                                 selected_card4_index=cond_suit(player4, suite, selected_card4_index)
                                 selected_card4 = player4.hand.select_card(
                                     selected_card4_index-1)
-                                print(f"The selected card is :{selected_card4}")
+                                print(f"\nThe selected card is :{selected_card4}")
                                 sel.append(selected_card4)
                             except ValueError:
                                 print("Please enter a valid number")
@@ -308,7 +308,7 @@ class trick:
                     print(
                         "-----------------------------------------------------------------------------------------------")
                     print(f"Player {player2.name}'s Turn")
-                    #print(f"Cards in Hand for {player2.name} \n {player2.iterate_hand()}")
+                    
                     player2.iterate_hand()
                     while True:
                         try:
@@ -318,7 +318,7 @@ class trick:
                                 selected_card2_index-1)
                             sel.append(selected_card2)
                             suite=selected_card2.suit
-                            print(f"The selected card is :{selected_card2}")
+                            print(f"\nThe selected card is :{selected_card2}")
                         except ValueError:
                             print("Please enter a valid number")
                             continue
@@ -330,7 +330,7 @@ class trick:
                     print(
                         "-----------------------------------------------------------------------------------------------")
                     print(f"Player {player3.name}'s Turn")
-                    #print(f"Cards in Hand for {player3.name} \n {player3.iterate_hand()}")
+                    
                     player3.iterate_hand()
                     while True:
                         try:
@@ -339,7 +339,7 @@ class trick:
                             selected_card3_index=cond_suit(player3, suite, selected_card3_index)
                             selected_card3 = player3.hand.select_card(
                                 selected_card3_index-1)
-                            print(f"The selected card is :{selected_card3}")
+                            print(f"\nThe selected card is :{selected_card3}")
                             sel.append(selected_card3)
                         except ValueError:
                             print("Please enter a valid number")
@@ -355,7 +355,6 @@ class trick:
 
                     if game_type == 4:
                         print(f"Player {player4.name}'s Turn")
-                        #print(f"Cards in Hand for {player4.name} \n {player4.iterate_hand()}")
                         player4.iterate_hand()
                         while True:
                             try:
@@ -364,7 +363,7 @@ class trick:
                                 selected_card4_index=cond_suit(player4, suite, selected_card4_index)
                                 selected_card4 = player4.hand.select_card(
                                     selected_card4_index-1)
-                                print(f"The selected card is :{selected_card4}")
+                                print(f"\nThe selected card is :{selected_card4}")
                                 sel.append(selected_card4)
                             except ValueError:
                                 print("Please enter a valid number")
@@ -377,7 +376,6 @@ class trick:
                         print(
                             "-----------------------------------------------------------------------------------------------")
                     print(f"Player {player1.name}'s Turn")
-                    #print(f"Cards in Hand for {player1.name} \n {player1.iterate_hand()}")
                     player1.iterate_hand()
                     while True:
                         try:
@@ -386,7 +384,7 @@ class trick:
                             selected_card1_index=cond_suit(player1, suite, selected_card1_index)
                             selected_card1 = player1.hand.select_card(
                                 selected_card1_index-1)
-                            print(f"The selected card is :{selected_card1}")
+                            print(f"\nThe selected card is :{selected_card1}")
                             sel.append(selected_card1)
                         except ValueError:
                             print("Please enter a valid number")
@@ -402,7 +400,7 @@ class trick:
                     print(
                         "-----------------------------------------------------------------------------------------------")
                     print(f"Player {player3.name}'s Turn")
-                    #print(f"Cards in Hand for {player3.name} \n {player3.iterate_hand()}")
+                    
                     player3.iterate_hand()
                     while True:
                         try:
@@ -410,7 +408,7 @@ class trick:
                                 input("Enter the position of the card you want to select: "))
                             selected_card3 = player3.hand.select_card(
                                 selected_card3_index-1)
-                            print(f"The selected card is :{selected_card3}")
+                            print(f"\nThe selected card is :{selected_card3}")
                             sel.append(selected_card3)
                             suite=selected_card3.suit
                         except ValueError:
@@ -424,7 +422,7 @@ class trick:
                     
                     if game_type == 4:
                         print(f"Player {player4.name}'s Turn")
-                        #print(f"Cards in Hand for {player4.name} \n {player4.iterate_hand()}")
+                        
                         player4.iterate_hand()
                         while True:
                             try:
@@ -433,7 +431,7 @@ class trick:
                                 selected_card4_index=cond_suit(player4, suite, selected_card4_index)
                                 selected_card4 = player4.hand.select_card(
                                     selected_card4_index-1)
-                                print(f"The selected card is :{selected_card4}")
+                                print(f"\nThe selected card is :{selected_card4}")
                                 sel.append(selected_card4)
                             except ValueError:
                                 print("Please enter a valid number")
@@ -447,7 +445,7 @@ class trick:
                             "-----------------------------------------------------------------------------------------------")
 
                     print(f"Player {player1.name}'s Turn")
-                    #print(f"Cards in Hand for {player4.name} \n {player4.iterate_hand()}")
+                    
                     player1.iterate_hand()
                     while True:
                         try:
@@ -456,7 +454,7 @@ class trick:
                             selected_card1_index=cond_suit(player1, suite, selected_card1_index)
                             selected_card1 = player1.hand.select_card(
                                 selected_card1_index-1)
-                            print(f"The selected card is :{selected_card1}")
+                            print(f"\nThe selected card is :{selected_card1}")
                             sel.append(selected_card1)
                         except ValueError:
                             print("Please enter a valid number")
@@ -469,7 +467,7 @@ class trick:
                     print(
                         "-----------------------------------------------------------------------------------------------")
                     print(f"Player {player2.name}'s Turn")
-                    #print(f"Cards in Hand for {player2.name} \n {player2.iterate_hand()}")
+                    
                     player2.iterate_hand()
                     while True:
                         try:
@@ -478,7 +476,7 @@ class trick:
                             selected_card2_index=cond_suit(player2, suite, selected_card2_index)
                             selected_card2 = player2.hand.select_card(
                                 selected_card2_index-1)
-                            print(f"The selected card is :{selected_card2}")
+                            print(f"\nThe selected card is :{selected_card2}")
                             sel.append(selected_card2)
                         except ValueError:
                             print("Please enter a valid number")
@@ -495,7 +493,7 @@ class trick:
                         print(
                             "-----------------------------------------------------------------------------------------------")
                         print(f"Player {player4.name}'s Turn")
-                        #print(f"Cards in Hand for {player4.name} \n {player4.iterate_hand()}")
+                        
                         player4.iterate_hand()
                         while True:
                             try:
@@ -504,7 +502,7 @@ class trick:
                                 selected_card4 = player4.hand.select_card(
                                     selected_card4_index-1)
                                 suite=selected_card4.suit
-                                print(f"The selected card is :{selected_card4}")
+                                print(f"\nThe selected card is :{selected_card4}")
                                 sel.append(selected_card4)
                                 
                             except ValueError:
@@ -528,7 +526,7 @@ class trick:
                                 selected_card1_index=cond_suit(player1, suite, selected_card1_index)
                                 selected_card1 = player1.hand.select_card(
                                     selected_card1_index-1)
-                                print(f"The selected card is :{selected_card1}")
+                                print(f"\nThe selected card is :{selected_card1}")
                                 sel.append(selected_card1)
                             except ValueError:
                                 print("Please enter a valid number")
@@ -551,7 +549,7 @@ class trick:
                                 selected_card2_index=cond_suit(player2, suite, selected_card2_index)
                                 selected_card2 = player2.hand.select_card(
                                     selected_card2_index-1)
-                                print(f"The selected card is :{selected_card2}")
+                                print(f"\nThe selected card is :{selected_card2}")
                                 sel.append(selected_card2)
                             except ValueError:
                                 print("Please enter a valid number")
@@ -574,7 +572,7 @@ class trick:
                                 selected_card3_index=cond_suit(player3, suite, selected_card3_index)
                                 selected_card3 = player3.hand.select_card(
                                     selected_card3_index-1)
-                                print(f"The selected card is :{selected_card3}")
+                                print(f"\nThe selected card is :{selected_card3}")
                                 sel.append(selected_card3)
                             except ValueError:
                                 print("Please enter a valid number")
@@ -591,7 +589,7 @@ class trick:
                 Trick_cards = trick_values[0]
                 Runt_value = trick_values[3]
                 player_points = trick_values[4]
-                print("Points for this hand:", player_points)
+                print("\nPoints for this hand:", player_points)
                 print("Trick Cards:", Trick_cards)
                 win_player = None
                 if (sel[trick_values[2]] == selected_card1):
@@ -613,7 +611,7 @@ class trick:
                     win_trick_score=get_points(Trick_cards[trick_values[2]])
                     rnt_value=get_points(Runt_value)
                     if win_trick_score > rnt_value:
-                        ch=input("Do you want to swap the runt with the Lowest card? (1 for Yes/ 2 for No):")
+                        ch=input("\nDo you want to swap the runt with the Lowest card? (1 for Yes/ 2 for No):")
                         if ch==1:
                             if (sel[trick_values[2]] == selected_card1):
                                 if (Runt_value == selected_card2):
@@ -659,45 +657,50 @@ class trick:
                                     selected_card4=Runt_value
                                     selected_card3=sel[trick_values[2]]
                     #combines all won tricks to form new hand
-                    player1.hand = player1.trick_won[0] + player1.trick_won[1]+player1.trick_won[2]+selected_card1
+                    player1.hand = player1.trick_won[0] + player1.trick_won[1]+player1.trick_won[2]
+                    player1.hand.append(selected_card1)
                     player1.trick_won=[]
-                    player2.hand = player2.trick_won[0] + player2.trick_won[1]+player2.trick_won[2]+selected_card2
+                    player2.hand = player2.trick_won[0] + player2.trick_won[1]+player2.trick_won[2]
+                    player2.hand.append(selected_card2)
                     player2.trick_won=[]
-                    player3.hand = player3.trick_won[0] + player3.trick_won[1]+player3.trick_won[2]+selected_card3
+                    player3.hand = player3.trick_won[0] + player3.trick_won[1]+player3.trick_won[2]
+                    player3.hand.append(selected_card3)
                     player3.trick_won=[]                    
-                    player4.hand = player4.trick_won[0] + player4.trick_won[1]+player4.trick_won[2]+selected_card4
+                    player4.hand = player4.trick_won[0] + player4.trick_won[1]+player4.trick_won[2]
+                    player4.hand.append(selected_card4)
                     player4.trick_won=[]
                 
                 elif i == 11 and game_type==3:
-                    player1.hand = player1.trick_won[0] + player1.trick_won[1]+player1.trick_won[2]
+                    player1.hand = player1.trick_won[0] + player1.trick_won[1]+player1.trick_won[2]+player1.trick_won[3]
                     player1.trick_won=[]
-                    player2.hand = player2.trick_won[0] + player2.trick_won[1]+player2.trick_won[2]
+                    player2.hand = player2.trick_won[0] + player2.trick_won[1]+player2.trick_won[2]+player2.trick_won[3]
                     player2.trick_won=[]
-                    player3.hand = player3.trick_won[0] + player3.trick_won[1]+player3.trick_won[2]
+                    player3.hand = player3.trick_won[0] + player3.trick_won[1]+player3.trick_won[2]+player3.trick_won[3]
                     player3.trick_won=[]
                 else:
                     if (game_type == 4):
-                        print(name1, "and",name3,"are in Team A")
+                        print("\n",name1, "and",name3,"are in Team A")
                         print(name2, "and",name4,"are in Team B")
                     else:
-                        print(f"The players are {player1.name}, {player2.name}, {player3.name}")
+                        print(f"\nThe players are {player1.name}, {player2.name}, {player3.name}")
                     while True:
                         Trick_assign = str(
-                            input("Do you want to keep the trick or give it to someone? ( 1 For Keep/ 2 for Give):"))
+                            input("\nDo you want to keep the trick or give it to someone? ( 1 For Keep/ 2 for Give):"))
                         if (Trick_assign == "1"):
-                            print("Keeping Trick")
+                            print("\n\nKeeping Trick")
                             player = trick.keeping_trick(
                                 win_player, Trick_cards, Runt_value,player_points)
                             break
                         elif (Trick_assign == "2"):
-                            print("Giving Trick")
+                            print("\n\nGiving Trick")
                             player = trick.assign_trick(Trick_cards, Runt_value,player_points, win_player.name)
                             break
                         else:
                             print("Invalid Input")
                             continue
 
-            # Continuation of a Trick ( Merging all the tricks of a player )       
+            # Continuation of a Trick ( Merging all the tricks of a player )
+            print("summing up the tricks scores")       
             player1.individual_score = sum(player1.individual_score)
             player2.individual_score = sum(player2.individual_score)
             player3.individual_score = sum(player3.individual_score)
@@ -705,27 +708,27 @@ class trick:
             if game_type == 4:
                 player4.individual_score = sum(player4.individual_score)
 
-            print("Player 1 Score", player1.individual_score)
+            print("\nPlayer 1 Score", player1.individual_score)
             print("Player 2 Score", player2.individual_score)
             teamA_score=player1.individual_score+player3.individual_score
             print("Player 3 Score", player3.individual_score)
             if game_type ==4:
                 print("Player 4 Score", player4.individual_score)
                 teamB_score=player2.individual_score+player4.individual_score
-                print("Team A score:",teamA_score)
+                print("\nTeam A score:",teamA_score)
                 print("Team B score:",teamB_score)
                 if (teamA_score >= (60*(j+1))) or (teamB_score>=(60*(j+1))):
-                    print("Game Over")
+                    print("*******************************Game Over*******************************")
                     break
             
-            print("Player 1 Hand")
+            print("\nPlayer 1 Hand")
             player1.iterate_hand()
-            print("Player 2 Hand")
+            print("\nPlayer 2 Hand")
             player2.iterate_hand()
-            print("Player 3 Hand")
+            print("\nPlayer 3 Hand")
             player3.iterate_hand()
             if game_type ==4:
-                print("Player 4 Hand")
+                print("\nPlayer 4 Hand")
                 player4.iterate_hand()
 
             
@@ -773,7 +776,7 @@ def cond_suit(player, suit, selected_card_index):
                     continue    
         
 def get_points(card):
-    # print(card)
+    
     if num_cards == 13:
         rank_points = {"Ace": 30, "King": 25, "Queen": 20, "Jack": 15, "10": 10,
                        "9": 9, "8": 8, "7": 7, "6": 6, "5": 5, "4": 4, "3": 3, "2": 2}
@@ -785,11 +788,7 @@ def get_points(card):
 def get_winning_card(cards):
     print(cards)
     suit = cards[0].suit
-    trick = cards  # [card1, card2, card3]
-    # cards = [card for card in [card1, card2, card3] if card.suit == suit]
-    # if card4:
-    #    cards.append(card4)
-    #    trick.append(card4)
+    trick = cards 
     car = [card for card in cards if card.suit == suit]
     if len(cards) == 0:
         print("No winning card as no cards have the same suit as the first card.")
