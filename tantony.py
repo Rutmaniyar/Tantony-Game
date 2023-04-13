@@ -622,56 +622,89 @@ class trick:
                     rnt_value=get_points(Runt_value)
                     if win_trick_score > rnt_value:
                         ch=input("\nDo you want to swap the runt with the Lowest card? (1 for Yes/ 2 for No):")
+                        print ("swapping the cards")
                         if ch==1:
                             if (sel[trick_values[2]] == selected_card1):
                                 if (Runt_value == selected_card2):
                                     selected_card1=Runt_value
                                     selected_card2=sel[trick_values[2]]
+                                    player1.individual_score.append(get_points(selected_card2))
+                                    print(f"swapped cards are {selected_card1} and {selected_card2} for {player1.name}\n")
                                 elif(Runt_value == selected_card3):
                                     selected_card1=Runt_value
                                     selected_card3=sel[trick_values[2]]
+                                    player1.individual_score.append(get_points(selected_card3))
+                                    print(f"swapped cards are {selected_card1} and {selected_card3} for {player1.name}\n")
                                 elif(Runt_value == selected_card4 and game_type ==4):
                                     selected_card1=Runt_value
                                     selected_card4=sel[trick_values[2]]
+                                    player1.individual_score.append(get_points(selected_card4))
+                                    print(f"swapped cards are {selected_card1} and {selected_card4} for {player1.name}\n")
                                
                             if (sel[trick_values[2]] == selected_card2):
                                 if (Runt_value == selected_card1):
                                     selected_card2=Runt_value
                                     selected_card1=sel[trick_values[2]]
+                                    player2.individual_score.append(get_points(selected_card1))
+                                    print(f"swapped cards are {selected_card2} and {selected_card1} for {player2.name}\n")
                                 elif(Runt_value == selected_card3):
                                     selected_card2=Runt_value
                                     selected_card3=sel[trick_values[2]]
+                                    player2.individual_score.append(get_points(selected_card3))
+                                    print(f"swapped cards are {selected_card2} and {selected_card3} for {player2.name}\n")
                                 elif(Runt_value == selected_card4 and game_type ==4):
                                     selected_card2=Runt_value
                                     selected_card4=sel[trick_values[2]]
+                                    player2.individual_score.append(get_points(selected_card4))
+                                    print(f"swapped cards are {selected_card2} and {selected_card4} for {player2.name}\n")
 
                             if (sel[trick_values[2]] == selected_card3):
                                 if (Runt_value == selected_card1):
                                     selected_card3=Runt_value
                                     selected_card1=sel[trick_values[2]]
+                                    player3.individual_score.append(get_points(selected_card1))
+                                    print(f"swapped cards are {selected_card3} and {selected_card1} for {player3.name}\n")
                                 elif(Runt_value == selected_card2):
                                     selected_card3=Runt_value
                                     selected_card2=sel[trick_values[2]]
+                                    player3.individual_score.append(get_points(selected_card2))
+                                    print(f"swapped cards are {selected_card3} and {selected_card2} for {player3.name}\n")
                                 elif(Runt_value == selected_card4 and game_type ==4):
                                     selected_card3=Runt_value
                                     selected_card4=sel[trick_values[2]]
+                                    player3.individual_score.append(get_points(selected_card4))
+                                    print(f"swapped cards are {selected_card3} and {selected_card4} for {player3.name}\n")
                           
                             if (sel[trick_values[2]] == selected_card4):
                                 if (Runt_value == selected_card1):
                                     selected_card4=Runt_value
                                     selected_card1=sel[trick_values[2]]
+                                    player4.individual_score.append(get_points(selected_card1))
+                                    print(f"swapped cards are {selected_card4} and {selected_card1} for {player4.name}\n")
                                 elif(Runt_value == selected_card2):
                                     selected_card4=Runt_value
                                     selected_card2=sel[trick_values[2]]
+                                    player4.individual_score.append(get_points(selected_card2))
+                                    print(f"swapped cards are {selected_card4} and {selected_card2} for {player4.name}\n")
                                 elif(Runt_value == selected_card3):
                                     selected_card4=Runt_value
                                     selected_card3=sel[trick_values[2]]
+                                    player4.individual_score.append(get_points(selected_card3))
+                                    print(f"swapped cards are {selected_card4} and {selected_card3} for {player4.name}\n")
                     else:
                         print("\nAs the runt is lowest card and the highest, the runt is not swapped\n")
+                        if (sel[trick_values[2]] == selected_card1):
+                            player1.individual_score.append(Runt_value)
+                        elif (sel[trick_values[2]] == selected_card2):
+                            player2.individual_score.append(Runt_value)
+                        elif (sel[trick_values[2]] == selected_card3):
+                            player3.individual_score.append(Runt_value)
+                        elif (sel[trick_values[2]] == selected_card4) and game_type == 4:
+                            player4.individual_score.append(Runt_value)
                     #combines all won tricks to form new hand
                     player1.hand.hand=player1.trick_won[0] + player1.trick_won[1]+player1.trick_won[2]
                     player1.hand.hand.append(selected_card1)
-                    print("Player 1 Hand:", player1.hand)
+                    print("\nPlayer 1 Hand:", player1.hand)
                     player1.trick_won=[]
                     player2.hand.hand = player2.trick_won[0] + player2.trick_won[1]+player2.trick_won[2]
                     player2.hand.hand.append(selected_card2)
