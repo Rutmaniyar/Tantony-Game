@@ -41,6 +41,11 @@ class Player:
 class Hand:
     def __init__(self, deck, cards_per_hand):
         self.hand = [deck.draw() for _ in range(cards_per_hand)]
+    
+    #assign hand to player from a list of cards
+    def assign_hand(self, cards):
+        self.hand = cards
+
 
     def select_card(self, index):
         selected_card = self.hand.pop(index)
@@ -656,26 +661,35 @@ class trick:
                                 elif(Runt_value == selected_card3):
                                     selected_card4=Runt_value
                                     selected_card3=sel[trick_values[2]]
+                    else:
+                        print("\nAs the runt is lowest card and the highest, the runt is not swapped\n")
                     #combines all won tricks to form new hand
-                    player1.hand = player1.trick_won[0] + player1.trick_won[1]+player1.trick_won[2]
-                    player1.hand.append(selected_card1)
+                    player1.hand.hand=player1.trick_won[0] + player1.trick_won[1]+player1.trick_won[2]
+                    player1.hand.hand.append(selected_card1)
+                    print("Player 1 Hand:", player1.hand)
                     player1.trick_won=[]
-                    player2.hand = player2.trick_won[0] + player2.trick_won[1]+player2.trick_won[2]
-                    player2.hand.append(selected_card2)
+                    player2.hand.hand = player2.trick_won[0] + player2.trick_won[1]+player2.trick_won[2]
+                    player2.hand.hand.append(selected_card2)
+                    print("Player 2 Hand:", player2.hand)
                     player2.trick_won=[]
-                    player3.hand = player3.trick_won[0] + player3.trick_won[1]+player3.trick_won[2]
-                    player3.hand.append(selected_card3)
+                    player3.hand.hand = player3.trick_won[0] + player3.trick_won[1]+player3.trick_won[2]
+                    player3.hand.hand.append(selected_card3)
+                    print("Player 3 Hand:", player3.hand)
                     player3.trick_won=[]                    
-                    player4.hand = player4.trick_won[0] + player4.trick_won[1]+player4.trick_won[2]
-                    player4.hand.append(selected_card4)
+                    player4.hand.hand = player4.trick_won[0] + player4.trick_won[1]+player4.trick_won[2]
+                    player4.hand.hand.append(selected_card4)
+                    print("Player 4 Hand:", player4.hand)
                     player4.trick_won=[]
                 
                 elif i == 11 and game_type==3:
-                    player1.hand = player1.trick_won[0] + player1.trick_won[1]+player1.trick_won[2]+player1.trick_won[3]
+                    player1.hand.hand = player1.trick_won[0] + player1.trick_won[1]+player1.trick_won[2]+player1.trick_won[3]
+                    print("Player 1 Hand:", player1.hand)
                     player1.trick_won=[]
-                    player2.hand = player2.trick_won[0] + player2.trick_won[1]+player2.trick_won[2]+player2.trick_won[3]
+                    player2.hand.hand = player2.trick_won[0] + player2.trick_won[1]+player2.trick_won[2]+player2.trick_won[3]
+                    print("Player 2 Hand:", player2.hand)
                     player2.trick_won=[]
-                    player3.hand = player3.trick_won[0] + player3.trick_won[1]+player3.trick_won[2]+player3.trick_won[3]
+                    player3.hand.hand = player3.trick_won[0] + player3.trick_won[1]+player3.trick_won[2]+player3.trick_won[3]
+                    print("Player 3 Hand:", player3.hand)
                     player3.trick_won=[]
                 else:
                     if (game_type == 4):
@@ -721,15 +735,7 @@ class trick:
                     print("*******************************Game Over*******************************")
                     break
             
-            print("\nPlayer 1 Hand")
-            player1.iterate_hand()
-            print("\nPlayer 2 Hand")
-            player2.iterate_hand()
-            print("\nPlayer 3 Hand")
-            player3.iterate_hand()
-            if game_type ==4:
-                print("\nPlayer 4 Hand")
-                player4.iterate_hand()
+
 
             
 
