@@ -694,13 +694,13 @@ class trick:
                     else:
                         print("\nAs the runt is lowest card and the highest, the runt is not swapped\n")
                         if (sel[trick_values[2]] == selected_card1):
-                            player1.individual_score.append(Runt_value)
+                            player1.individual_score.append(get_points(Runt_value))
                         elif (sel[trick_values[2]] == selected_card2):
-                            player2.individual_score.append(Runt_value)
+                            player2.individual_score.append(get_points(Runt_value))
                         elif (sel[trick_values[2]] == selected_card3):
-                            player3.individual_score.append(Runt_value)
+                            player3.individual_score.append(get_points(Runt_value))
                         elif (sel[trick_values[2]] == selected_card4) and game_type == 4:
-                            player4.individual_score.append(Runt_value)
+                            player4.individual_score.append(get_points(Runt_value))
                     #combines all won tricks to form new hand
                     player1.hand.hand=player1.trick_won[0] + player1.trick_won[1]+player1.trick_won[2]
                     player1.hand.hand.append(selected_card1)
@@ -762,21 +762,28 @@ class trick:
 
             print("\nPlayer 1 Score", player1.individual_score)
             print("Player 2 Score", player2.individual_score)
-            teamA_score=player1.individual_score+player3.individual_score
+            teamA_score=teamA_score+player1.individual_score+player3.individual_score
             print("Player 3 Score", player3.individual_score)
             if game_type ==4:
                 print("Player 4 Score", player4.individual_score)
-                teamB_score=player2.individual_score+player4.individual_score
+                teamB_score=teamB_score+player2.individual_score+player4.individual_score
                 print("\nTeam A score:",teamA_score)
                 print("Team B score:",teamB_score)
                 if (teamA_score >= (60*(j+1))) or (teamB_score>=(60*(j+1))):
                     print("*******************************Game Over*******************************")
                     break
-            
-
-
-            
-
+                else:
+                    if teamA_score>teamB_score:
+                        print("Team A has won the game")
+                    elif teamB_score>teamA_score:
+                        print("Team B has won the game")                 
+            else:
+                if player1.individual_score>player2.individual_score and player1.individual_score>player3.individual_score:
+                    print("Player 1 has won the game")
+                elif player2.individual_score>player1.individual_score and player2.individual_score>player3.individual_score:
+                    print("Player 2 has won the game")
+                elif player3.individual_score>player1.individual_score and player3.individual_score>player2.individual_score:
+                    print("Player 3 has won the game")
 
 def check_suit(player, suit):
     indices = []
@@ -874,6 +881,8 @@ if num_cards == 13:
     name4 = str(input("Enter the Player 4 name: "))
     print("-------------------------------------------------------------------------------------------------")
     print(name1, "and",name3,"are in Team A")
+    teamA_score=0
+    teamB_score=0
     print(name2, "and",name4,"are in Team B")
 print("-------------------------------------------------------------------------------------------------")
 
