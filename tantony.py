@@ -33,6 +33,11 @@ class Player:
         for i, card in enumerate(self.hand.hand):
             print(f"{i+1}. {card}")
     
+    def iterate_score(self, ind):
+        
+        return 
+
+    
 class Hand:
     def __init__(self, deck, cards_per_hand):
         self.hand = [deck.draw() for _ in range(cards_per_hand)]
@@ -78,7 +83,7 @@ class trick:
                 return player
             else:
                 print("You already have three tricks Please give it to any other player")
-                return trick.assign_trick(TrickCards, runt_value,player_score)
+                return trick.assign_trick(TrickCards, runt_value,player_score, player.name)
 
         if (len(player.trick_won) <= 2):
             player.trick_won.append(TrickCards)
@@ -90,91 +95,107 @@ class trick:
             return player
         else:
             print("You already have three tricks Please give it to any other player")
-            return trick.assign_trick(TrickCards, runt_value,player_score)
+            return trick.assign_trick(TrickCards, runt_value,player_score, player.name)
 
     def assign_trick(TrickCards, runt_value,player_score,player_name):
         # player.trick_won.append[TrickCards]
-        assigned_to = check_names(str(input("Enter the name of the player you want to assign the trick:")),player_name)     
+        if game_type ==4:
+            assigned_to = check_names(str(input("Enter the name of the player you want to assign the trick:")),player_name)     
 
-        if (assigned_to == player1.name):
-            if (len(player1.trick_won) <= 2):
-                player1.trick_won.append(TrickCards)
-                player1.Runt_Face.append(runt_value)
-                player1.individual_score.append(player_score)
-                print(player1.trick_won)
-                return player1
-            else:
-                print(
-                    "The Player already has three tricks you have to give to other player")
-                return trick.assign_trick(TrickCards, runt_value,player_score)
-        if (assigned_to == player2.name):
-            if (len(player2.trick_won) <= 2):
-                player2.trick_won.append(TrickCards)
-                player2.Runt_Face.append(runt_value)
-                player2.individual_score.append(player_score)
-                print(player2.trick_won)
-                return player2
-            else:
-                print(
-                    "The Player already has three tricks you have to give to other player")
-                return trick.assign_trick(TrickCards, runt_value,player_score)
-        if (assigned_to == player3.name):
-            if (len(player3.trick_won) <= 2):
-                player3.trick_won.append(TrickCards)
-                player3.Runt_Face.append(runt_value)
-                player3.individual_score.append(player_score)
-                print(player3.trick_won)
-                return player3
-            else:
-                print(
-                    "The Player already has three tricks you have to give to other player")
-                return trick.assign_trick(TrickCards, runt_value,player_score)
-        if (assigned_to == player4.name):
-            if (len(player4.trick_won) <= 2):
-                player4.trick_won.append(TrickCards)
-                player4.Runt_Face.append(runt_value)
-                player4.individual_score.append(player_score)
-                print(player4.trick_won)
-                return player4
-            else:
-                print(
-                    "The Player already has three tricks you have to give to other player")
-                return trick.assign_trick(TrickCards, runt_value,player_score)
-
-        # For 3 Player Version
-        if (game_type == 3):
-            assigned_to = str(
-                input("Enter the name of the player you want to assign the trick:"))
             if (assigned_to == player1.name):
                 if (len(player1.trick_won) <= 2):
                     player1.trick_won.append(TrickCards)
                     player1.Runt_Face.append(runt_value)
-                    print(player1.trick_won)
+                    player1.individual_score.append(player_score)
+                    print(f"The Runt Values are{player1.Runt_Face}")
+                    print(f"The Points assigned are {player1.individual_score}")
+                    print(f"The Trick assigned is {player1.trick_won}")
                     return player1
                 else:
                     print(
                         "The Player already has three tricks you have to give to other player")
-                    return trick.assign_trick(TrickCards, runt_value,player_score)
+                    return trick.assign_trick(TrickCards, runt_value,player_score, player_name)
             if (assigned_to == player2.name):
                 if (len(player2.trick_won) <= 2):
                     player2.trick_won.append(TrickCards)
                     player2.Runt_Face.append(runt_value)
-                    print(player2.trick_won)
+                    player2.individual_score.append(player_score)
+                    print(f"The Runt Values are{player2.Runt_Face}")
+                    print(f"The Points assigned are {player2.individual_score}")
+                    print(f"The Trick assigned is {player2.trick_won}")
                     return player2
                 else:
                     print(
                         "The Player already has three tricks you have to give to other player")
-                    return trick.assign_trick(TrickCards, runt_value,player_score)
+                    return trick.assign_trick(TrickCards, runt_value,player_score, player_name)
             if (assigned_to == player3.name):
                 if (len(player3.trick_won) <= 2):
                     player3.trick_won.append(TrickCards)
                     player3.Runt_Face.append(runt_value)
-                    print(player3.trick_won)
+                    player3.individual_score.append(player_score)
+                    print(f"The Runt Values are{player3.Runt_Face}")
+                    print(f"The Points assigned are {player3.individual_score}")
+                    print(f"The Trick assigned is {player3.trick_won}")
                     return player3
                 else:
                     print(
                         "The Player already has three tricks you have to give to other player")
-                    return trick.assign_trick(TrickCards, runt_value,player_score)
+                    return trick.assign_trick(TrickCards, runt_value,player_score, player_name)
+            if (assigned_to == player4.name ):
+                if (len(player4.trick_won) <= 2):
+                    player4.trick_won.append(TrickCards)
+                    player4.Runt_Face.append(runt_value)
+                    player4.individual_score.append(player_score)
+                    print(f"The Runt Values are{player4.Runt_Face}")
+                    print(f"The Points assigned are {player4.individual_score}")
+                    print(f"The Trick assigned is {player4.trick_won}")
+                    return player4
+                else:
+                    print(
+                        "The Player already has three tricks you have to give to other player")
+                    return trick.assign_trick(TrickCards, runt_value,player_score, player_name)
+        # For 3 Player Version
+        if (game_type == 3):
+            assigned_to = check_names(str(input("Enter the name of the player you want to assign the trick:")),player_name)
+            if (assigned_to == player1.name):
+                if (len(player1.trick_won) <= 3):
+                    player1.trick_won.append(TrickCards)
+                    player1.Runt_Face.append(runt_value)
+                    player1.individual_score.append(player_score)
+                    print(f"The Runt Values are{player1.Runt_Face}")
+                    print(f"The Points assigned are {player1.individual_score}")
+                    print(f"The Trick assigned is {player1.trick_won}")
+                    return player1
+                else:
+                    print(
+                        "The Player already has three tricks you have to give to other player")
+                    return trick.assign_trick(TrickCards, runt_value,player_score, player_name)
+            if (assigned_to == player2.name):
+                if (len(player2.trick_won) <= 3):
+                    player2.trick_won.append(TrickCards)
+                    player2.Runt_Face.append(runt_value)
+                    player2.individual_score.append(player_score)
+                    print(f"The Runt Values are{player2.Runt_Face}")
+                    print(f"The Points assigned are {player2.individual_score}")
+                    print(f"The Trick assigned is {player2.trick_won}")
+                    return player2
+                else:
+                    print(
+                        "The Player already has three tricks you have to give to other player")
+                    return trick.assign_trick(TrickCards, runt_value,player_score, player_name)
+            if (assigned_to == player3.name):
+                if (len(player3.trick_won) <= 3):
+                    player3.trick_won.append(TrickCards)
+                    player3.Runt_Face.append(runt_value)
+                    player3.individual_score.append(player_score)
+                    print(f"The Runt Values are{player3.Runt_Face}")
+                    print(f"The Points assigned are {player3.individual_score}")
+                    print(f"The Trick assigned is {player3.trick_won}")
+                    return player3
+                else:
+                    print(
+                        "The Player already has three tricks you have to give to other player")
+                    return trick.assign_trick(TrickCards, runt_value,player_score, player_name)
 
     def playingtrick(player):
        
@@ -604,8 +625,7 @@ class trick:
                                 elif(Runt_value == selected_card4 and game_type ==4):
                                     selected_card1=Runt_value
                                     selected_card4=sel[trick_values[2]]
-
-                                
+                               
                             if (sel[trick_values[2]] == selected_card2):
                                 if (Runt_value == selected_card1):
                                     selected_card2=Runt_value
@@ -685,18 +705,30 @@ class trick:
             if game_type == 4:
                 player4.individual_score = sum(player4.individual_score)
 
-            print("Player 1 Hand", player1.hand)
-            print("Player 2 Hand", player2.hand)
-            print("Player 3 Hand", player3.hand)
-            print("Player 4 Hand", player4.hand)
-
             print("Player 1 Score", player1.individual_score)
             print("Player 2 Score", player2.individual_score)
+            teamA_score=player1.individual_score+player3.individual_score
             print("Player 3 Score", player3.individual_score)
-            print("Player 4 Score", player4.individual_score)
+            if game_type ==4:
+                print("Player 4 Score", player4.individual_score)
+                teamB_score=player2.individual_score+player4.individual_score
+                print("Team A score:",teamA_score)
+                print("Team B score:",teamB_score)
+                if (teamA_score >= (60*(j+1))) or (teamB_score>=(60*(j+1))):
+                    print("Game Over")
+                    break
+            
+            print("Player 1 Hand")
+            player1.iterate_hand()
+            print("Player 2 Hand")
+            player2.iterate_hand()
+            print("Player 3 Hand")
+            player3.iterate_hand()
+            if game_type ==4:
+                print("Player 4 Hand")
+                player4.iterate_hand()
 
-            print("Team A score:",sum(player1.individual_score+player3.individual_score))
-            print("Team B score:",sum(player2.individual_score+player4.individual_score))
+            
 
 
 def check_suit(player, suit):
@@ -709,7 +741,7 @@ def check_suit(player, suit):
 def check_names(name, play_name):
     if name in Names and name != play_name:
         return str(name)
-    elif name != play_name:
+    elif name == play_name:
         print("Cannot assign it to Yourself \n \n")
         while True:
             name = input("Enter the name of the player you want to assign the trick: ")
