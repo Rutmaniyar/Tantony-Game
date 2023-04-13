@@ -208,6 +208,11 @@ class trick:
             print("-----------------------------------------------------------------------------------------------")
             print("-----------------------------------------------------------------------------------------------")
             print("Round:", j+1)
+            player1.individual_score = []
+            player2.individual_score = []
+            player3.individual_score = []
+            if game_type == 4:
+                player4.individual_score = []
             print("-----------------------------------------------------------------------------------------------")
             print("-----------------------------------------------------------------------------------------------")
             for i in range(num_cards):
@@ -726,13 +731,9 @@ class trick:
             print("Player 2 Score", player2.individual_score)
             teamA_score=player1.individual_score+player3.individual_score
             print("Player 3 Score", player3.individual_score)
-            player1.individual_score=[]
-            player2.individual_score=[]
-            player3.individual_score=[]
             if game_type ==4:
                 print("Player 4 Score", player4.individual_score)
                 teamB_score=player2.individual_score+player4.individual_score
-                player4.individual_score=[]
                 print("\nTeam A score:",teamA_score)
                 print("Team B score:",teamB_score)
                 if (teamA_score >= (60*(j+1))) or (teamB_score>=(60*(j+1))):
