@@ -720,6 +720,21 @@ class trick:
                     player4.trick_won=[]
                 
                 elif i == 11 and game_type==3:
+                    while True:
+                        Trick_assign = str(
+                            input("\nDo you want to keep the trick or give it to someone? ( 1 For Keep/ 2 for Give):"))
+                        if (Trick_assign == "1"):
+                            print("\n\nKeeping Trick")
+                            player = trick.keeping_trick(
+                                win_player, Trick_cards, Runt_value,player_points)
+                            break
+                        elif (Trick_assign == "2"):
+                            print("\n\nGiving Trick")
+                            player = trick.assign_trick(Trick_cards, Runt_value,player_points, win_player.name)
+                            break
+                        else:
+                            print("Invalid Input")
+                            continue
                     player1.hand.hand = player1.trick_won[0] + player1.trick_won[1]+player1.trick_won[2]+player1.trick_won[3]
                     print("Player 1 Hand:", player1.hand)
                     player1.trick_won=[]
@@ -795,11 +810,6 @@ def check_suit(player, suit):
 def check_names(name, play_name):
     if name in Names and name != play_name:
         return str(name)
-    elif name == play_name:
-        print("Cannot assign it to Yourself \n \n")
-        while True:
-            name = input("Enter the name of the player you want to assign the trick: ")
-            return check_names(name, play_name)
     else:
         print("Please enter a valid name \n \n")
         while True:
