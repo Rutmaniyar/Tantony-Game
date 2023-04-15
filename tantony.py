@@ -794,15 +794,30 @@ class trick:
                 else:
                     if teamA_score>teamB_score:
                         print("Team A has won the game")
+                        if j == 3:
+                            print("*******************************Game Over*******************************")
+                            break
                     elif teamB_score>teamA_score:
-                        print("Team B has won the game")                 
+                        print("Team B has won the game")
+                        if j == 3:
+                            print("*******************************Game Over*******************************")
+                            break
             else:
                 if player1.individual_score>player2.individual_score and player1.individual_score>player3.individual_score:
                     print("Player 1 has won the game")
+                    if j == 2:
+                        print("*******************************Game Over*******************************")
+                        break
                 elif player2.individual_score>player1.individual_score and player2.individual_score>player3.individual_score:
                     print("Player 2 has won the game")
+                    if j == 2:
+                        print("*******************************Game Over*******************************")
+                        break
                 elif player3.individual_score>player1.individual_score and player3.individual_score>player2.individual_score:
                     print("Player 3 has won the game")
+                    if j == 2:
+                        print("*******************************Game Over*******************************")
+                        break
 
 def check_suit(player, suit):
     indices = []
