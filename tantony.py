@@ -720,6 +720,7 @@ class trick:
                     player4.trick_won=[]
                 
                 elif i == 11 and game_type==3:
+                    print(f"\nThe players are {player1.name}, {player2.name}, {player3.name}\n")
                     while True:
                         Trick_assign = str(
                             input("\nDo you want to keep the trick or give it to someone? ( 1 For Keep/ 2 for Give):"))
@@ -735,6 +736,7 @@ class trick:
                         else:
                             print("Invalid Input")
                             continue
+                    print("\nThe Round is over\n\n Preparing for next round\n\n")
                     player1.hand.hand = player1.trick_won[0] + player1.trick_won[1]+player1.trick_won[2]+player1.trick_won[3]
                     print("Player 1 Hand:", player1.hand)
                     player1.trick_won=[]
