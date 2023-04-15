@@ -718,6 +718,7 @@ class trick:
                     player4.hand.hand.append(selected_card4)
                     print("Player 4 Hand:", player4.hand)
                     player4.trick_won=[]
+                    print("\n\n")
                 
                 elif i == 11 and game_type==3:
                     print(f"\nThe players are {player1.name}, {player2.name}, {player3.name}\n")
@@ -746,6 +747,7 @@ class trick:
                     player3.hand.hand = player3.trick_won[0] + player3.trick_won[1]+player3.trick_won[2]+player3.trick_won[3]
                     print("Player 3 Hand:", player3.hand)
                     player3.trick_won=[]
+                    print("\n\n")
                 else:
                     if (game_type == 4):
                         print("\n",name1, "and",name3,"are in Team A")
