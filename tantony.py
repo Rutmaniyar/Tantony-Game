@@ -1,4 +1,5 @@
 import random
+import sys
 
 
 class Deck:
@@ -877,39 +878,6 @@ def get_winning_card(cards):
 
 
 
-print("-------------------------------------------------------------------------------------------------")
-while True:
-    game_type = int(input(
-        "Enter the Type of the Game: \n 4 for Partnership \n 3 for Three Player \n"))
-    print("-------------------------------------------------------------------------------------------------")
-    if game_type == 4:
-        num_cards = 13
-        break
-    elif game_type == 3:
-        num_cards = 12
-        break
-    else:
-        print("Invalid Input")
-        continue
-
-
-print("-------------------------------------------------------------------------------------------------")
-name1 = str(input("Enter the Player 1 name: "))
-name2 = str(input("Enter the Player 2 name: "))
-name3 = str(input("Enter the Player 3 name: "))
-teamA_score_glob=[]
-teamB_score_glob=[]
-
-if num_cards == 13:
-    name4 = str(input("Enter the Player 4 name: "))
-    print("-------------------------------------------------------------------------------------------------")
-    print(name1, "and",name3,"are in Team A")
-    print(name2, "and",name4,"are in Team B")
-print("-------------------------------------------------------------------------------------------------")
-
-Names=[name1,name2,name3]
-if num_cards == 13:
-    Names.append(name4)
 
 def cutting_for_dealer(game_type, Listplayer):
     Leader_cards = []
@@ -955,51 +923,102 @@ def assigning_dealer(New_card1, New_card2, New_card3, New_card4=None):
 
 
 print("-------------------------------------------------------------------------------------------------")
-
-deck = Deck()
-deck.shuffle()
-if num_cards == 12:
-    for card in deck.deck:
-        if card.rank in {"7", "8", "9", "10"}:
-            deck.deck.remove(card)
-    hand1 = Hand(deck, num_cards)
-    hand2 = Hand(deck, num_cards)
-    hand3 = Hand(deck, num_cards)
-else:
-    hand1 = Hand(deck, num_cards)
-    hand2 = Hand(deck, num_cards)
-    hand3 = Hand(deck, num_cards)
-    hand4 = Hand(deck, num_cards)
-player1 = Player(name1, hand1)
-player2 = Player(name2, hand2)
-player3 = Player(name3, hand3)
-if num_cards == 13:
-    player4 = Player(name4, hand4)
-
-player1 = Player(name1, hand1)
-player2 = Player(name2, hand2)
-player3 = Player(name3, hand3)
-
-List_player = [player1, player2, player3]
-if num_cards == 13:
-    player4 = Player(name4, hand4)
-    List_player.append(player4)
-
-Leading_player = cutting_for_dealer(game_type, Listplayer=List_player)
-if (game_type == 4):
-    assigned_leader = assigning_dealer(
-        Leading_player[0], Leading_player[1], Leading_player[2], Leading_player[3])
-if (game_type == 3):
-    assigned_leader = assigning_dealer(
-        Leading_player[0], Leading_player[1], Leading_player[2])
-lime_pos = (List_player.index(assigned_leader) + 1) % int(game_type)
-Dealer_left = List_player[lime_pos]
-
-print(player1)
-print(player2)
-print(player3)
-if num_cards == 13:
-    print(player4)
+while True:
+    print("-------------------------------------------------------------------------------------------------")
+    while True:
+        game_type = int(input(
+            "Enter the Type of the Game: \n 4 for Partnership \n 3 for Three Player \n"))
+        print("-------------------------------------------------------------------------------------------------")
+        if game_type == 4:
+            num_cards = 13
+            break
+        elif game_type == 3:
+            num_cards = 12
+            break
+        else:
+            print("Invalid Input")
+            continue
 
 
-trick.playingtrick(Dealer_left)
+    print("-------------------------------------------------------------------------------------------------")
+    name1 = str(input("Enter the Player 1 name: "))
+    name2 = str(input("Enter the Player 2 name: "))
+    name3 = str(input("Enter the Player 3 name: "))
+    teamA_score_glob=[]
+    teamB_score_glob=[]
+
+    if num_cards == 13:
+        name4 = str(input("Enter the Player 4 name: "))
+        print("-------------------------------------------------------------------------------------------------")
+        print(name1, "and",name3,"are in Team A")
+        print(name2, "and",name4,"are in Team B")
+    print("-------------------------------------------------------------------------------------------------")
+
+    Names=[name1,name2,name3]
+    if num_cards == 13:
+        Names.append(name4)
+
+
+    deck = Deck()
+    deck.shuffle()
+    if num_cards == 12:
+        for card in deck.deck:
+            if card.rank in {"7", "8", "9", "10"}:
+                deck.deck.remove(card)
+        hand1 = Hand(deck, num_cards)
+        hand2 = Hand(deck, num_cards)
+        hand3 = Hand(deck, num_cards)
+    else:
+        hand1 = Hand(deck, num_cards)
+        hand2 = Hand(deck, num_cards)
+        hand3 = Hand(deck, num_cards)
+        hand4 = Hand(deck, num_cards)
+    player1 = Player(name1, hand1)
+    player2 = Player(name2, hand2)
+    player3 = Player(name3, hand3)
+    if num_cards == 13:
+        player4 = Player(name4, hand4)
+
+    player1 = Player(name1, hand1)
+    player2 = Player(name2, hand2)
+    player3 = Player(name3, hand3)
+
+    List_player = [player1, player2, player3]
+    if num_cards == 13:
+        player4 = Player(name4, hand4)
+        List_player.append(player4)
+
+    Leading_player = cutting_for_dealer(game_type, Listplayer=List_player)
+    if (game_type == 4):
+        assigned_leader = assigning_dealer(
+            Leading_player[0], Leading_player[1], Leading_player[2], Leading_player[3])
+    if (game_type == 3):
+        assigned_leader = assigning_dealer(
+            Leading_player[0], Leading_player[1], Leading_player[2])
+    lime_pos = (List_player.index(assigned_leader) + 1) % int(game_type)
+    Dealer_left = List_player[lime_pos]
+
+    print(player1)
+    print(player2)
+    print(player3)
+    if num_cards == 13:
+        print(player4)
+
+
+    trick.playingtrick(Dealer_left)
+    print("-------------------------------------------------------------------------------------------------")
+    while True:
+        print("-------------------------------------------------------------------------------------------------")
+        print("Do you want to play again? (yes 1/No 0)")
+        print("-------------------------------------------------------------------------------------------------")
+        play_again = input()
+        if play_again == "1":
+            break
+        elif play_again == "0":
+            print("-------------------------------------------------------------------------------------------------")
+            print("Thanks for playing!")
+            print("-------------------------------------------------------------------------------------------------")
+            sys.exit()
+        else:
+            print("Invalid input")
+            continue
