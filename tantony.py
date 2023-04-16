@@ -723,21 +723,9 @@ class trick:
                 
                 elif i == 11 and game_type==3:
                     print(f"\nThe players are {player1.name}, {player2.name}, {player3.name}\n")
-                    while True:
-                        Trick_assign = str(
-                            input("\nDo you want to keep the trick or give it to someone? ( 1 For Keep/ 2 for Give):"))
-                        if (Trick_assign == "1"):
-                            print("\n\nKeeping Trick")
-                            player = trick.keeping_trick(
-                                win_player, Trick_cards, Runt_value,player_points)
-                            break
-                        elif (Trick_assign == "2"):
-                            print("\n\nGiving Trick")
-                            player = trick.assign_trick(Trick_cards, Runt_value,player_points, win_player.name)
-                            break
-                        else:
-                            print("Invalid Input")
-                            continue
+                    if len(win_player.trick_won) == 3:
+                        print("\n\nShould give the trick away Trick")
+                        player = trick.assign_trick(Trick_cards, Runt_value,player_points, win_player.name)
                     print("\nThe Round is over\n\n Preparing for next round\n\n")
                     player1.hand.hand = player1.trick_won[0] + player1.trick_won[1]+player1.trick_won[2]+player1.trick_won[3]
                     print("Player 1 Hand:", player1.hand)
