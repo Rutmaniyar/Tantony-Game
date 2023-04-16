@@ -906,12 +906,13 @@ print("-------------------------------------------------------------------------
 name1 = str(input("Enter the Player 1 name: "))
 name2 = str(input("Enter the Player 2 name: "))
 name3 = str(input("Enter the Player 3 name: "))
+teamA_score=0
+teamB_score=0
+
 if num_cards == 13:
     name4 = str(input("Enter the Player 4 name: "))
     print("-------------------------------------------------------------------------------------------------")
     print(name1, "and",name3,"are in Team A")
-    teamA_score=0
-    teamB_score=0
     print(name2, "and",name4,"are in Team B")
 print("-------------------------------------------------------------------------------------------------")
 
