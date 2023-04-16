@@ -217,6 +217,7 @@ class trick:
             print("-----------------------------------------------------------------------------------------------")
             for i in range(num_cards):
                 sel = []
+
                 print(
                     "-----------------------------------------------------------------------------------------------")
                 print("Hand:", i+1)
@@ -784,8 +785,10 @@ class trick:
             print("Player 3 Score", player3.individual_score)
             if game_type ==4:
                 print("Player 4 Score", player4.individual_score)
-                teamA_score=teamA_score+player1.individual_score+player3.individual_score
-                teamB_score=teamB_score+player2.individual_score+player4.individual_score
+                teamA_score_glob.append(player1.individual_score+player3.individual_score)
+                teamB_score_glob.append(player2.individual_score+player4.individual_score)
+                teamB_score=sum(teamB_score_glob)
+                teamA_score=sum(teamA_score_glob)
                 print("\nTeam A score:",teamA_score)
                 print("Team B score:",teamB_score)
                 if (teamA_score >= (60*(j+1))) or (teamB_score>=(60*(j+1))):
@@ -798,7 +801,7 @@ class trick:
                             print("*******************************Game Over*******************************")
                             break
                     elif teamB_score>teamA_score:
-                        print("Team B has won the game")
+                        print("\n\nTeam B has won the game")
                         if j == 3:
                             print("*******************************Game Over*******************************")
                             break
@@ -906,8 +909,8 @@ print("-------------------------------------------------------------------------
 name1 = str(input("Enter the Player 1 name: "))
 name2 = str(input("Enter the Player 2 name: "))
 name3 = str(input("Enter the Player 3 name: "))
-teamA_score=0
-teamB_score=0
+teamA_score_glob=[]
+teamB_score_glob=[]
 
 if num_cards == 13:
     name4 = str(input("Enter the Player 4 name: "))
