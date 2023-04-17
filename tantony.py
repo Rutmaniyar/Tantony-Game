@@ -4,7 +4,7 @@ import sys
 
 class Deck:
     def __init__(self):
-        suits = ["\u2764", "\u2666", "\U00002660", "\u2663"]
+        suits = ["\u2764\ufe0f", "\u2666", "\U00002660", "\u2663"]
         if (game_type == 4):
             ranks = ["Ace", "2", "3", "4", "5", "6", "7",
                      "8", "9", "10", "Jack", "Queen", "King"]
