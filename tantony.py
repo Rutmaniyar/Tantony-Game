@@ -88,23 +88,21 @@ class trick:
                 print(f"The Runt faces are {player.Runt_Face}")
                 return player
             else:
-                if game_type ==4:
-                    print("\nYou already have three tricks Please give it to any other player")
-                else:
-                    print("\nYou already have four tricks Please give it to any other player")
+                print("\nYou already have Four tricks Please give it to any other player")
                 return trick.assign_trick(TrickCards, runt_value,player_score, player.name)
 
-        if (len(player.trick_won) <= 2):
-            player.trick_won.append(TrickCards)
-            player.Runt_Face.append(runt_value)
-            player.individual_score.append(player_score)
-            print(f"The trick won are {player.trick_won}")
-            print(f"Points for the player: {player.individual_score}")
-            print(f"The Runt faces are {player.Runt_Face}")
-            return player
-        else:
-            print("\nYou already have three tricks Please give it to any other player")
-            return trick.assign_trick(TrickCards, runt_value,player_score, player.name)
+        if (game_type == 4):
+            if(len(player.trick_won) <= 2):
+                player.trick_won.append(TrickCards)
+                player.Runt_Face.append(runt_value)
+                player.individual_score.append(player_score)
+                print(f"The trick won are {player.trick_won}")
+                print(f"Points for the player: {player.individual_score}")
+                print(f"The Runt faces are {player.Runt_Face}")
+                return player
+            else:
+                print("\nYou already have three tricks Please give it to any other player")
+                return trick.assign_trick(TrickCards, runt_value,player_score, player.name)`
 
     def assign_trick(TrickCards, runt_value,player_score,player_name):
         # player.trick_won.append[TrickCards]
