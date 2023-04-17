@@ -88,7 +88,10 @@ class trick:
                 print(f"The Runt faces are {player.Runt_Face}")
                 return player
             else:
-                print("\nYou already have three tricks Please give it to any other player")
+                if game_type ==4:
+                    print("\nYou already have three tricks Please give it to any other player")
+                else:
+                    print("\nYou already have four tricks Please give it to any other player")
                 return trick.assign_trick(TrickCards, runt_value,player_score, player.name)
 
         if (len(player.trick_won) <= 2):
