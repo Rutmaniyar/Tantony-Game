@@ -819,7 +819,7 @@ def check_suit(player, suit):
     return indices
 
 def check_names(name, play_name):
-    if name in Names and name != play_name:
+    if name in Names:
         return str(name)
     else:
         print("Please enter a valid name \n \n")
