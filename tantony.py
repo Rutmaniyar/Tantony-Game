@@ -102,7 +102,7 @@ class trick:
                 return player
             else:
                 print("\nYou already have three tricks Please give it to any other player")
-                return trick.assign_trick(TrickCards, runt_value,player_score, player.name)`
+                return trick.assign_trick(TrickCards, runt_value,player_score, player.name)
 
     def assign_trick(TrickCards, runt_value,player_score,player_name):
         # player.trick_won.append[TrickCards]
