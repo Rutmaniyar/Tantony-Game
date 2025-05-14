@@ -76,7 +76,7 @@ This project is licensed under the MIT License.
 ## 🙏 Credits
 
 - Original game design: [David Parlett](https://www.parlettgames.uk/)
-- Python implementation by [Your Name]
+- Python implementation by Rut Maniyar
 
 ---
 
