@@ -52,7 +52,7 @@ python tantony_game.py
 
 ## 💡 Strategy Tips
 
-- Keep an eye on your opponents' trick quotas — foist low-value tricks on them early!
+- Keep an eye on your opponents' trick quotas — first low-value tricks on them early!
 - Assign tricks to your partner if you want to control the next lead.
 - Try to set up a high “hog” (Ace lead when no one else can follow suit).
 
@@ -75,7 +75,7 @@ This project is licensed under the MIT License.
 
 ## 🙏 Credits
 
-- Original game design: [David Parlett](https://www.parlettgames.uk/)
+- Original game design: [David Parlett](https://www.parlettgames.uk/oricards/tantony.html)
 - Python implementation by Rut Maniyar
 
 ---
