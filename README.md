@@ -34,7 +34,7 @@ This is a fully-functional **console-based implementation in Python** of the com
 ### ▶️ How to Run
 
 ```bash
-git clone https://github.com/yourusername/tantony-card-game.git
+git clone https://github.com/Rutmaniyar/Tantony-Game.git
 cd tantony-card-game
 python tantony_game.py
 ```
